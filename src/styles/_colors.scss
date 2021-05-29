@@ -1,0 +1,127 @@
+// -------------------- General -------------------- // 
+
+$background-color: #121212;
+
+$primary:#1473E6;
+$primary-light: #46A0F5;
+
+
+$text-1: #FCFCFC; 
+$text-2: #CBCBCB;
+$text-3: #A2A2A0;
+$text-4: #70706D;
+
+// -------------------- Cards -------------------- // 
+
+$material-1: #373737;
+$material-2: #323232;
+$material-3: #272727;
+$material-4: #212121;
+
+// -------------------- Shadows -------------------- // 
+
+$base-shadow-color: #334;
+
+@mixin shadow-xs {
+  box-shadow: 0px 0px 6px 0px rgba($color: $base-shadow-color, $alpha: 0.16);
+}
+
+@mixin shadow-s {
+  box-shadow: 0px 2px 8px 0px rgba($color: $base-shadow-color, $alpha: 0.18);
+}
+
+@mixin shadow-m {
+  box-shadow: 0px 4px 12px 0px rgba($color: $base-shadow-color, $alpha: 0.24);
+}
+
+@mixin shadow-lg {
+  box-shadow: 0px 6px 18px 0px rgba($color: $base-shadow-color, $alpha: 0.30);
+}
+
+@mixin shadow-xlg {
+  box-shadow: 0px 8px 24px 0px rgba($color: $base-shadow-color, $alpha: 0.36);
+}
+
+@mixin shadow-xxlg {
+  box-shadow: 0px 12px 32px 0px rgba($color: $base-shadow-color, $alpha: 0.40);
+}
+
+@mixin shadow-xs-inset {
+  box-shadow: 0px 0px 6px 0px rgba($color: $base-shadow-color, $alpha: 0.16) inset;
+}
+
+@mixin shadow-s-inset {
+  box-shadow: 0px 2px 8px 0px rgba($color: $base-shadow-color, $alpha: 0.18) inset;
+}
+
+@mixin shadow-m-inset {
+  box-shadow: 0px 4px 12px 0px rgba($color: $base-shadow-color, $alpha: 0.24) inset;
+}
+
+@mixin shadow-lg-inset {
+  box-shadow: 0px 6px 18px 0px rgba($color: $base-shadow-color, $alpha: 0.30) inset;
+}
+
+@mixin shadow-xlg-inset {
+  box-shadow: 0px 8px 24px 0px rgba($color: $base-shadow-color, $alpha: 0.36) inset;
+}
+
+@mixin shadow-xxlg-inset {
+  box-shadow: 0px 12px 32px 0px rgba($color: $base-shadow-color, $alpha: 0.40) inset;
+}
+
+// -------------------- Layout -------------------- // 
+
+@mixin row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin rowr {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@mixin col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin colr {
+  display: flex;
+  flex-direction: column;
+}
+
+// -------------------- Utility -------------------- // 
+
+@mixin trans($seconds: 0.2s) {
+  transition: all ease $seconds;
+}
+
+
+
+// -------------------- Implementation -------------------- // 
+
+.shadow-xs {
+  @include shadow-xs;
+}
+
+.shadow-s {
+  @include shadow-s;
+}
+
+.shadow-m {
+  @include shadow-m;
+}
+
+.shadow-lg {
+  @include shadow-lg;
+}
+
+.shadow-xlg {
+  @include shadow-xlg;
+}
+
+.shadow-xxlg {
+  @include shadow-xxlg;
+}

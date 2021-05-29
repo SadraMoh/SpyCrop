@@ -1,0 +1,25 @@
+@import '_colors.scss';
+
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+ 
+@import '~material-design-icons-iconfont/src/material-design-icons';
+
+
+:root {
+  font-size: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  color: $text-2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+  background-color: $background-color;
+}
+
+.material-icons { outline: inherit }
