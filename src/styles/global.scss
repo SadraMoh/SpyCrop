@@ -1,7 +1,7 @@
 @import '_colors.scss';
 
 $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
- 
+
 @import '~material-design-icons-iconfont/src/material-design-icons';
 
 
@@ -22,4 +22,33 @@ body {
   background-color: $background-color;
 }
 
-.material-icons { outline: inherit }
+a {
+  text-decoration: none;
+  cursor: pointer;
+  @include trans(.32s);
+}
+
+a:hover {
+  color: $primary-light;
+  @include trans(.16s);
+}
+
+.material-icons {
+  outline: inherit
+}
+
+.row {
+  @include row;
+}
+
+.rowr {
+  @include rowr;
+}
+
+.col {
+  @include col;
+}
+
+.colr {
+  @include colr;
+}

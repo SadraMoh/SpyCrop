@@ -3,11 +3,24 @@
         <button class="mat-btn btn-primary ">
             <i class="material-icons">add</i>
         </button>
+        <button class="mat-btn btn-default">
+            <i class="material-icons">view-list</i>
+        </button>
+        <div class="mat row">
+            <input type="text" placeholder="Search..." #txtSearch>
+            <button class="btn-invis">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
     </header>
     <aside class="m-aside">
-
+        <nav class="navigation">
+            <a routerLink="Recent" routerLinkActive="active">Recent</a>
+            <a routerLink="Boomarks" routerLinkActive="active">Bookmarks</a>
+            <a routerLink="All" routerLinkActive="active">All</a>
+        </nav>
     </aside>
     <content class="m-content">
-
+        <router-outlet></router-outlet>
     </content>
 </div>

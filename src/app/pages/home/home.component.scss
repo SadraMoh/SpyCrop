@@ -1,0 +1,53 @@
+@import '/src/styles/colors';
+
+$aside-width: 200px;
+$header-height: 50px;
+$padding: 28px;
+
+.m {
+  width: 100%;
+
+  .m-header {
+    height: $header-height;
+    position: fixed;
+    top: $padding;
+    left: $aside-width + $padding;
+    right: $aside-width + $padding;
+    background-color: $material-1;
+  }
+
+  .m-aside {
+    position: fixed;
+    top: $header-height + $padding * 2;
+    width: $aside-width;
+    margin-right: $padding;
+
+    .navigation {
+      padding-right: $padding;
+      border-right: 1px solid #aaa;
+      @include col;
+
+      a {
+        text-align: right;
+        font-size: 1.5em;
+        color: $text-2;
+        margin-bottom: 8px;
+      }
+
+      a.active {
+        font-size: 2em;
+        color: $text-1
+      }
+
+    }
+  }
+
+  .m-content {
+    @include col;
+    background-color: coral;
+    margin-left: $aside-width + $padding;
+    margin-right: $aside-width + $padding;
+    margin-top: $header-height + $padding * 2;
+    min-height: 100px;
+  }
+}

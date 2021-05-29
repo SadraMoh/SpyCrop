@@ -8,6 +8,9 @@ import { NewBookComponent } from './pages/new-book/new-book.component';
 import { BookBlockComponent } from './components/book-block/book-block.component';
 import { WorkbenchSingleCamComponent } from './pages/workbench-single-cam/workbench-single-cam.component';
 import { WorkbenchDoubleCamComponent } from './pages/workbench-double-cam/workbench-double-cam.component';
+import { RecentComponent } from './pages/home/recent/recent.component';
+import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
+import { AllComponent } from './pages/home/all/all.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { WorkbenchDoubleCamComponent } from './pages/workbench-double-cam/workbe
     NewBookComponent,
     BookBlockComponent,
     WorkbenchSingleCamComponent,
-    WorkbenchDoubleCamComponent
+    WorkbenchDoubleCamComponent,
+    RecentComponent,
+    BookmarksComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,
