@@ -1,6 +1,6 @@
 @import '/src/styles/colors';
 
-$aside-width: 200px;
+$aside-width: 164px;
 $header-height: 50px;
 $padding: 28px;
 
@@ -13,7 +13,9 @@ $padding: 28px;
     top: $padding;
     left: $aside-width + $padding;
     right: $aside-width + $padding;
-    background-color: $material-1;
+    @include row;
+    align-items: center;
+    gap: 12px;
   }
 
   .m-aside {
@@ -24,18 +26,21 @@ $padding: 28px;
 
     .navigation {
       padding-right: $padding;
-      border-right: 1px solid #aaa;
+      border-right: 2px solid $material-2;
       @include col;
 
       a {
         text-align: right;
-        font-size: 1.5em;
+        font-size: 1em;
         color: $text-2;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
+        height: 32px;
+        line-height: 32px;
+        vertical-align: middle;
       }
 
       a.active {
-        font-size: 2em;
+        font-size: 1.5em;
         color: $text-1
       }
 
@@ -44,10 +49,55 @@ $padding: 28px;
 
   .m-content {
     @include col;
-    background-color: coral;
     margin-left: $aside-width + $padding;
     margin-right: $aside-width + $padding;
     margin-top: $header-height + $padding * 2;
     min-height: 100px;
+  }
+}
+
+@media only screen and (max-width: 1240px) {
+  .m{
+    .m-header {
+      left: $aside-width + $padding;
+      right: $padding;
+    }
+  
+    .m-aside {
+      position: fixed;
+      top: $header-height + $padding * 2;
+      width: $aside-width;
+      margin-right: $padding;
+  
+      .navigation {
+        padding-right: $padding;
+        border-right: 2px solid $material-2;
+        @include col;
+  
+        a {
+          text-align: right;
+          font-size: 1em;
+          color: $text-2;
+          margin-bottom: 12px;
+          height: 32px;
+          line-height: 32px;
+          vertical-align: middle;
+        }
+  
+        a.active {
+          font-size: 1.5em;
+          color: $text-1
+        }
+  
+      }
+    }
+  
+    .m-content {
+      @include col;
+      margin-left: $aside-width + $padding;
+      margin-right: $padding;
+      margin-top: $header-height + $padding * 2;
+      min-height: 100px;
+    }
   }
 }

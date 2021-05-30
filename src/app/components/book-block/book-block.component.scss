@@ -1,0 +1,90 @@
+@import '/src/styles/colors';
+
+.block {
+  background-color: $material-1;
+  @include border-def-radius;
+  overflow: hidden;
+
+  .thumbnail {
+    height: 150px;
+    position: relative;
+
+    [like] {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: $text-3;
+      background-color: transparent;
+      z-index: 20;
+      @include trans;
+      transition-property: color, background-color;
+    }
+
+    [like].active {
+      color: rgb(255, 174, 0);
+      animation-timing-function: cubic-bezier();
+      animation-duration: 1s;
+    }
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 6;
+    }
+
+    .deets {
+      opacity: 0;
+      padding: 8px;
+      z-index: 10;
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.64);
+      backdrop-filter: blur(6px);
+      @include trans;
+      transition-property: opacity;
+
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include col;
+
+        .page-count {
+          margin-right: auto;
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  .thumbnail:hover {
+    .deets {
+      opacity: 1;
+      @include trans;
+    }
+  }
+
+  .info {
+    padding: 8px;
+    @include row;
+    align-items: center;
+
+    .title {
+      color: $text-1;
+      font-size: 1em;
+    }
+
+    .date-created {
+      color: $text-4;
+      font-size: .8em;
+      margin-left: auto;
+    }
+  }
+}

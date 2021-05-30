@@ -1,1 +1,16 @@
-<p>book-block works!</p>
+<div class="block">
+    <div class="thumbnail">
+        <img src="https://picsum.photos/100/64" alt="">
+        <button like class="btn-invis material-icons" (click)="toggleFavouriteClick()"
+            [class.active]="model.isFavourite">star</button>
+        <div class="deets">
+            <div class="container">
+                <label class="page-count">16 Pages</label>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <h3 class="title">Title</h3>
+        <label class="date-created">Yesterday</label>
+    </div>
+</div>

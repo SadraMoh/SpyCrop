@@ -1,13 +1,14 @@
 <div class="m">
     <header class="m-header">
-        <button class="mat-btn btn-primary ">
+        <button class="mat-btn btn-primary shadow-lg">
             <i class="material-icons">add</i>
         </button>
-        <button class="mat-btn btn-default">
-            <i class="material-icons">view-list</i>
+        <button style="margin-left: auto;" class="mat-btn btn-default shadow-lg" (click)="viewStyleClick()">
+            <i *ngIf="isViewGrid" class="material-icons">view_list</i>
+            <i *ngIf="!isViewGrid" class="material-icons">grid_view</i>
         </button>
-        <div class="mat row">
-            <input type="text" placeholder="Search..." #txtSearch>
+        <div class="mat-1 row border-def-radius shadow-lg">
+            <input type="text" class="entry-invis" placeholder="Search..." #txtSearch>
             <button class="btn-invis">
                 <i class="material-icons">search</i>
             </button>
@@ -16,11 +17,11 @@
     <aside class="m-aside">
         <nav class="navigation">
             <a routerLink="Recent" routerLinkActive="active">Recent</a>
-            <a routerLink="Boomarks" routerLinkActive="active">Bookmarks</a>
+            <a routerLink="Bookmarks" routerLinkActive="active">Bookmarks</a>
             <a routerLink="All" routerLinkActive="active">All</a>
         </nav>
     </aside>
-    <content class="m-content">
+    <main class="m-content">
         <router-outlet></router-outlet>
-    </content>
+    </main>
 </div>

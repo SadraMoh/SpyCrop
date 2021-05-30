@@ -33,6 +33,11 @@ a:hover {
   @include trans(.16s);
 }
 
+button {
+  cursor: pointer;
+  font-size: 1em;
+}
+
 .material-icons {
   outline: inherit
 }
@@ -52,3 +57,115 @@ a:hover {
 .colr {
   @include colr;
 }
+
+// -------------------- Implementations -------------------- // 
+
+.mat-1 {
+  background-color: $material-1;
+}
+
+.mat-2 {
+  background-color: $material-2;
+}
+
+.mat-3 {
+  background-color: $material-3;
+}
+
+.mat-4 {
+  background-color: $material-4;
+}
+
+.border-def-radius {
+  @include border-def-radius;
+}
+
+.shadow-xs {
+  @include shadow-xs
+}
+
+.shadow-s {
+  @include shadow-s
+}
+
+.shadow-m {
+  @include shadow-m
+}
+
+.shadow-lg {
+  @include shadow-lg
+}
+
+.shadow-xlg {
+  @include shadow-xlg
+}
+
+// #region Controls
+
+.entry-invis {
+  background-color: transparent;
+  border: 0;
+  font-size: 1em;
+  padding: 6px 8px;
+  color: $text-1;
+}
+
+// BTN
+
+.btn-invis {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 4px;
+  color: $text-1;
+  @include circle;
+  border: 0;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.mat-btn {
+  border: 0;
+  @include border-def-radius;
+  background-color: $material-2;
+  color: $text-1;
+  padding: 4px;
+  cursor: pointer;
+  @include trans(.3s);
+
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.mat-btn:hover {
+  @include trans(.16s);
+  background-color: lighten($color: $material-2, $amount: 8%);
+}
+
+.mat-btn:active {
+  @include transz;
+  background-color: lighten($color: $material-2, $amount: 16%);
+}
+
+.btn-primary {
+  background-color: $primary;
+  color: $text-1;
+
+  >* {
+    color: $text-1;
+  }
+
+}
+
+.btn-primary:hover {
+  background-color: lighten($color: $primary, $amount: 8%);
+}
+
+.btn-primary:active {
+  @include transz;
+  background-color: lighten($color: $primary, $amount: 16%);
+}
+
+
+// #endregion Controls

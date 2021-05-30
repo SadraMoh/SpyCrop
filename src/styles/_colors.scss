@@ -6,7 +6,7 @@ $primary:#1473E6;
 $primary-light: #46A0F5;
 
 
-$text-1: #FCFCFC; 
+$text-1: #FCFCFC;
 $text-2: #CBCBCB;
 $text-3: #A2A2A0;
 $text-4: #70706D;
@@ -17,6 +17,19 @@ $material-1: #373737;
 $material-2: #323232;
 $material-3: #272727;
 $material-4: #212121;
+
+// -------------------- Border -------------------- // 
+
+$border-color: #4D4D4D;
+$border: 1px solid $border-color;
+
+@mixin border-def-radius {
+  border-radius: 4px;
+}
+
+@mixin circle {
+  border-radius: 1000px;
+}
 
 // -------------------- Shadows -------------------- // 
 
@@ -98,7 +111,14 @@ $base-shadow-color: #334;
   transition: all ease $seconds;
 }
 
+@mixin transz {
+  transition: all ease 0.01s;
+}
 
+@mixin grid($width: 220px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+}
 
 // -------------------- Implementation -------------------- // 
 

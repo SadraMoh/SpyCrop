@@ -11,6 +11,7 @@ import { WorkbenchDoubleCamComponent } from './pages/workbench-double-cam/workbe
 import { RecentComponent } from './pages/home/recent/recent.component';
 import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
 import { AllComponent } from './pages/home/all/all.component';
+import { BookBlockViewerComponent } from './pages/home/book-block-viewer/book-block-viewer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AllComponent } from './pages/home/all/all.component';
     WorkbenchDoubleCamComponent,
     RecentComponent,
     BookmarksComponent,
-    AllComponent
+    AllComponent,
+    BookBlockViewerComponent
   ],
   imports: [
     BrowserModule,
