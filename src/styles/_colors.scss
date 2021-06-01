@@ -1,6 +1,6 @@
 // -------------------- General -------------------- // 
 
-$background-color: #121212;
+$background-color: #141414;
 
 $primary:#1473E6;
 $primary-light: #46A0F5;
@@ -10,13 +10,6 @@ $text-1: #FCFCFC;
 $text-2: #CBCBCB;
 $text-3: #A2A2A0;
 $text-4: #70706D;
-
-// -------------------- Cards -------------------- // 
-
-$material-1: #373737;
-$material-2: #323232;
-$material-3: #272727;
-$material-4: #212121;
 
 // -------------------- Border -------------------- // 
 
@@ -33,7 +26,7 @@ $border: 1px solid $border-color;
 
 // -------------------- Shadows -------------------- // 
 
-$base-shadow-color: #334;
+$base-shadow-color: #000;
 
 @mixin shadow-xs {
   box-shadow: 0px 0px 6px 0px rgba($color: $base-shadow-color, $alpha: 0.16);
@@ -83,6 +76,23 @@ $base-shadow-color: #334;
   box-shadow: 0px 12px 32px 0px rgba($color: $base-shadow-color, $alpha: 0.40) inset;
 }
 
+
+// -------------------- Cards -------------------- // 
+
+$material-1: #373737;
+$material-2: #323232;
+$material-3: #272727;
+$material-4: #212121;
+
+$card-padding : 8px;
+
+@mixin card {
+  background-color: $material-1;
+  @include shadow-m;
+  @include border-def-radius;
+  padding: $card-padding;
+}
+
 // -------------------- Layout -------------------- // 
 
 @mixin row {
@@ -120,28 +130,3 @@ $base-shadow-color: #334;
   grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
 }
 
-// -------------------- Implementation -------------------- // 
-
-.shadow-xs {
-  @include shadow-xs;
-}
-
-.shadow-s {
-  @include shadow-s;
-}
-
-.shadow-m {
-  @include shadow-m;
-}
-
-.shadow-lg {
-  @include shadow-lg;
-}
-
-.shadow-xlg {
-  @include shadow-xlg;
-}
-
-.shadow-xxlg {
-  @include shadow-xxlg;
-}

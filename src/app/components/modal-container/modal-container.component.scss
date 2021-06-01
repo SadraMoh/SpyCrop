@@ -1,0 +1,31 @@
+@import '/src/styles/colors';
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
+  z-index: 256;
+  @include col;
+  opacity: 0;
+  display: none;
+
+  .container {
+    z-index: 300;
+    min-width: 300px;
+    min-height: 300px;
+    background-color: $material-1;
+    margin: auto;
+    padding: 8px;
+  }
+
+}
+
+
+.overlay.open {
+  display: block;
+  opacity: 1;
+}

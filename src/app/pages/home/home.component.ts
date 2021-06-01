@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { BlockViewService } from 'src/app/services/block-view.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public isViewGrid: boolean = true;
+  constructor(
+    public modalService: ModalService,
+    public viewService: BlockViewService
+  ) {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }
 
   viewStyleClick(): boolean {
-    this.isViewGrid = !this.isViewGrid;
-    return this.isViewGrid;
+    this.viewService.isGridView = !this.viewService.isGridView;
+    return this.viewService.isGridView;
+  }
+
+  @ViewChild("temp")
+  private temp!: TemplateRef<any>;
+
+  addProjectClick(): void {
+    this.modalService.modal.template = this.temp;
   }
 
 }

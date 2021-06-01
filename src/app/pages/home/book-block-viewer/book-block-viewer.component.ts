@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlockViewService } from 'src/app/services/block-view.service';
 
 @Component({
   selector: 'app-book-block-viewer',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookBlockViewerComponent implements OnInit {
 
-  constructor() { }
+  public isGridView: boolean = true;
+
+  constructor(private viewService: BlockViewService) {
+    this.isGridView = viewService.isGridView;
+    viewService.viewChanged.subscribe(view => this.isGridView = view);
+  }
 
   ngOnInit(): void {
   }

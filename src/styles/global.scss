@@ -60,6 +60,10 @@ button {
 
 // -------------------- Implementations -------------------- // 
 
+.card {
+  @include card;
+}
+
 .mat-1 {
   background-color: $material-1;
 }
@@ -76,7 +80,8 @@ button {
   background-color: $material-4;
 }
 
-.border-def-radius {
+.border-def-radius,
+.round {
   @include border-def-radius;
 }
 
@@ -169,3 +174,83 @@ button {
 
 
 // #endregion Controls
+
+// #region Table
+
+$table-padding : 8px;
+
+.tbl {
+  border-spacing: 0;
+
+  thead {
+    tr {
+      background-color: $material-3;
+
+      th {
+        padding: $table-padding;
+        text-align: left;
+      }
+
+      th:first-child{
+        padding-left: 16px;
+      }
+
+      th:last-child{
+        padding-right: 16px;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: $material-1;
+      @include trans(.32s);
+
+      td {
+        padding: $table-padding;
+      }
+
+      td:first-child{
+        padding-left: 16px;
+      }
+
+      td:last-child{
+        padding-right: 16px;
+      }
+    }
+  }
+}
+
+.tbl.tbl-striped {
+  tbody {
+    tr:nth-child(2n - 1) {
+      background-color: $material-2;
+    }
+  }
+}
+
+.tbl.tbl-hover {
+  tbody {
+    tr:hover {
+      @include trans(.16s);
+      background-color: lighten($color: $material-1, $amount: 6%);
+    }
+  }
+}
+
+.tbl.tbl-hover.tbl.tbl-striped {
+  tbody{
+    tr:nth-child(2n-1):hover {
+      background-color: lighten($color: $material-1, $amount: 6%);
+    }
+  }
+}
+
+.tbl.round {
+  overflow: hidden;
+  @include border-def-radius;
+}
+
+
+
+// #endregion Table

@@ -1,11 +1,11 @@
 <div class="m">
     <header class="m-header">
-        <button class="mat-btn btn-primary shadow-lg">
+        <button class="mat-btn btn-primary shadow-lg" (click)="addProjectClick()">
             <i class="material-icons">add</i>
         </button>
         <button style="margin-left: auto;" class="mat-btn btn-default shadow-lg" (click)="viewStyleClick()">
-            <i *ngIf="isViewGrid" class="material-icons">view_list</i>
-            <i *ngIf="!isViewGrid" class="material-icons">grid_view</i>
+            <i *ngIf="viewService.isGridView" class="material-icons">view_list</i>
+            <i *ngIf="!viewService.isGridView" class="material-icons">grid_view</i>
         </button>
         <div class="mat-1 row border-def-radius shadow-lg">
             <input type="text" class="entry-invis" placeholder="Search..." #txtSearch>
@@ -25,3 +25,15 @@
         <router-outlet></router-outlet>
     </main>
 </div>
+
+<ng-template #temp>
+    <h3>
+        HElLo WoRLdss
+    </h3>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum culpa, maxime necessitatibus porro harum
+        cupiditate tempore quaerat quis vero iste repellat modi nisi accusamus, illo voluptas. Ut quo sequi quaerat
+        laboriosam debitis.
+    </p>
+    <button class="btn btn-primary">OK</button>
+</ng-template>

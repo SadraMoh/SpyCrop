@@ -12,6 +12,7 @@ import { RecentComponent } from './pages/home/recent/recent.component';
 import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
 import { AllComponent } from './pages/home/all/all.component';
 import { BookBlockViewerComponent } from './pages/home/book-block-viewer/book-block-viewer.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BookBlockViewerComponent } from './pages/home/book-block-viewer/book-bl
     RecentComponent,
     BookmarksComponent,
     AllComponent,
-    BookBlockViewerComponent
+    BookBlockViewerComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

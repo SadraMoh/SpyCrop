@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-book-block',
@@ -11,9 +13,7 @@ export class BookBlockComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   toggleFavouriteClick(): boolean {
     this.model.isFavourite = !this.model.isFavourite;
