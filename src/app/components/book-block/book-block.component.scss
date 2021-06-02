@@ -6,8 +6,8 @@
   overflow: hidden;
 
   .thumbnail {
-    height: 150px;
     position: relative;
+    aspect-ratio: 1.85;
 
     [like] {
       position: absolute;

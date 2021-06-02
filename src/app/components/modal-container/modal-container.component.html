@@ -1,7 +1,7 @@
-<div class="overlay" [class.open]="true">
-    <div class="container">
-        <ng-container *ngTemplateOutlet="main">
-
+<div #overlay class="overlay" [class.open]="isShowingModal" (click)="overlayClicked($event)">
+    <div #container class="container">
+        <ng-container *ngTemplateOutlet="template">
+            
         </ng-container>
     </div>
 </div>

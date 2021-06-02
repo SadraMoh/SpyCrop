@@ -10,8 +10,9 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class HomeComponent implements OnInit {
 
+  color: string = 'blue';
+
   constructor(
-    public modalService: ModalService,
     public viewService: BlockViewService
   ) {
 
@@ -25,11 +26,12 @@ export class HomeComponent implements OnInit {
     return this.viewService.isGridView;
   }
 
-  @ViewChild("temp")
-  private temp!: TemplateRef<any>;
+
+  @ViewChild("modal")
+  modal!: ModalComponent;
 
   addProjectClick(): void {
-    this.modalService.modal.template = this.temp;
+    this.modal.show();
   }
 
 }

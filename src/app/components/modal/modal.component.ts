@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -7,10 +8,18 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalService: ModalService
+  ) {
+    modalService.registerModalComponent(this);
+  }
 
-  @Input("template")
+  @ViewChild("template")
   public template!: TemplateRef<any>;
+
+  show(): void {
+    this.modalService.show(this);
+  }
 
   ngOnInit(): void {
   }

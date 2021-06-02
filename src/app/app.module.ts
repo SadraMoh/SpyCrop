@@ -13,6 +13,8 @@ import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
 import { AllComponent } from './pages/home/all/all.component';
 import { BookBlockViewerComponent } from './pages/home/book-block-viewer/book-block-viewer.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ModalDirective } from './utilities/directives/modal.directive';
+import { ModalContainerComponent } from './components/modal-container/modal-container.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ModalComponent } from './components/modal/modal.component';
     BookmarksComponent,
     AllComponent,
     BookBlockViewerComponent,
-    ModalComponent
+    ModalContainerComponent,
+    ModalComponent,
+    ModalDirective
   ],
   imports: [
     BrowserModule,

@@ -9,15 +9,10 @@ import { ModalService } from 'src/app/services/modal.service';
 })
 export class AllComponent implements OnInit, AfterViewInit {
 
-  constructor(
-    private modalService: ModalService,
-  ) { }
-
-  @ViewChild("modal")
-  public modal!: ModalComponent;
+  constructor() { }
 
   ngAfterViewInit(): void {
-    this.modalService.modal = this.modal;
+
   }
 
   ngOnInit(): void {

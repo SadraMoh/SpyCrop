@@ -10,28 +10,24 @@ export class ModalService {
   private isInitialized: boolean = false;
   container!: ModalContainerComponent;
 
-  public modal!: ModalComponent;
-
-  public modalVisibilityStateChanged = new EventEmitter<boolean>();
+  modals: ModalComponent[] = [];
 
   constructor() {
 
   }
 
+  show(modal: ModalComponent): void {
+    this.container.show(modal);
+  }
+
+  // This method registers the modal container
   registerModalContainer(component: ModalContainerComponent) {
     this.container = component;
     this.isInitialized = true;
-    // todo implement modal show
   }
 
-  reg(modal: ModalComponent): void {
-    this.modal = modal;
-  }
-
-  showModal(e: ElementRef) {
-    if (!this.isInitialized) throw 'modal container is not initialized';
-
-
+  registerModalComponent(component: ModalComponent) {
+    this.modals.push(component);
   }
 
 }
