@@ -1,0 +1,31 @@
+@import '/src/styles/colors';
+
+.main {
+  @include row;
+
+  .type-selector {
+    background-color: $material-3;
+
+    h1 {
+      font-size: 2em;
+      color: $text-2;
+    }
+
+    a {
+      background-color: transparent;
+      font-size: 1.2em;
+      color: $text-4;
+      @include trans(0.32);
+    }
+
+    a:hover {
+        @include trans(0.16s);
+        background-color: rgba(150,150,150,0.8);
+    }
+    
+    a.active {
+        background-color: transparentize($color: #3286ED, $amount: 0.92);
+    }
+    
+  }
+}

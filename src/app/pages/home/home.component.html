@@ -1,6 +1,6 @@
 <div class="m">
     <header class="m-header">
-        <button class="mat-btn btn-primary shadow-lg" (click)="modal.show()">
+        <button class="mat-btn btn-primary shadow-lg" (click)="addProjectClick()">
             <i class="material-icons">add</i>
         </button>
         <button style="margin-left: auto;" class="mat-btn btn-default shadow-lg" (click)="viewStyleClick()">
@@ -26,29 +26,4 @@
     </main>
 </div>
 
-<app-modal #modal>
-    <h3>
-        HElLo WoRLdss
-    </h3>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum culpa, maxime necessitatibus porro harum
-        cupiditate tempore <span [appModal]="color">quaerat quis vero iste repellat </span> modi nisi accusamus, illo voluptas. Ut quo sequi quaerat
-        laboriosam debitis.
-    </p>
-    <button class="btn btn-primary" (click)="modaltwee.show()">OK</button>
-</app-modal>
-
-<app-modal #modaltwee>
-    <h2>
-        GOODbye WorLD
-    </h2>
-    <p>
-        Lorem, ipsum dolor.
-    </p>
-    <ul>
-        <li>1 lorem </li>
-        <li>2 lorem </li>
-        <li>3 lorem </li>
-        <li>4 lorem </li>
-    </ul>  
-</app-modal>
+<app-add-project-modal></app-add-project-modal>

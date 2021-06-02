@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   color: string = 'blue';
 
   constructor(
-    public viewService: BlockViewService
+    public viewService: BlockViewService,
+    private modaService: ModalService
   ) {
 
   }
@@ -31,7 +32,6 @@ export class HomeComponent implements OnInit {
   modal!: ModalComponent;
 
   addProjectClick(): void {
-    this.modal.show();
+    this.modaService.callShow('artyom');
   }
-
 }

@@ -15,6 +15,9 @@ import { BookBlockViewerComponent } from './pages/home/book-block-viewer/book-bl
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalDirective } from './utilities/directives/modal.directive';
 import { ModalContainerComponent } from './components/modal-container/modal-container.component';
+import { AddProjectModalComponent } from './components/add-project-modal/add-project-modal.component';
+import { NewSingleCamComponent } from './components/add-project-modal/new-single-cam/new-single-cam.component';
+import { NewDoubleCamComponent } from './components/add-project-modal/new-double-cam/new-double-cam.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ModalContainerComponent } from './components/modal-container/modal-cont
     BookBlockViewerComponent,
     ModalContainerComponent,
     ModalComponent,
-    ModalDirective
+    ModalDirective,
+    AddProjectModalComponent,
+    NewSingleCamComponent,
+    NewDoubleCamComponent
   ],
   imports: [
     BrowserModule,
