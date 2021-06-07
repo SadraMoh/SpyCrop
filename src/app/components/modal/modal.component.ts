@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { ModalService } from 'src/app/services/modal.service';
+import { ModalService, ModalSize } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -30,6 +30,12 @@ export class ModalComponent implements OnInit {
   public template!: TemplateRef<any>;
 
   /**
+   * The Size of this modal
+   */
+  @Input("size")
+  public size: ModalSize = ModalSize.small; 
+
+  /**
    * The name to use when attempting to call a modal through `ModalService`
    */
   @Input("name")
@@ -42,7 +48,7 @@ export class ModalComponent implements OnInit {
   hide(): void {
     this.modalService.hide(this);
   }
-  
+
   ngOnInit(): void {
   }
 

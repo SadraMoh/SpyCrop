@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProjectModalComponent } from './components/add-project-modal/add-project-modal.component';
 import { AllComponent } from './pages/home/all/all.component';
 import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,12 +16,13 @@ const routes: Routes = [
       { path: '', redirectTo: 'Recent', pathMatch: 'full' },
       { path: 'Recent', component: RecentComponent },
       { path: 'Bookmarks', component: BookmarksComponent },
-      { path: 'All', component: AllComponent }
+      { path: 'All', component: AllComponent },
+      //- Aux Routes
+      { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent, outlet: 'projectType' },
+      { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent, outlet: 'projectType' },
+
     ]
   },
-  { path: 'new', component: NewBookComponent },
-  { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent },
-  { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent },
   { path: '**', redirectTo: '' }
 ];
 

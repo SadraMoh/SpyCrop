@@ -71,3 +71,14 @@ export class ModalService {
   }
 
 }
+
+export enum ModalSize {
+  /** used for alerting the user */
+  small,
+  /** used for messages and confirmation */
+  medium,
+  /** one-time small dialog with one goal*/
+  large,
+  /** a complex modal often with nested routes */
+  xlarge
+}

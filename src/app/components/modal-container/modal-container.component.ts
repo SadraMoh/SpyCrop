@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, TemplateRef, ViewContainerRef, Input } from '@angular/core';
-import { ModalService } from 'src/app/services/modal.service';
+import { ModalService, ModalSize } from 'src/app/services/modal.service';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -35,24 +35,22 @@ export class ModalContainerComponent implements OnInit {
       await this.hideContainer();
     }
 
+    this.sizeToClass();
+
     this.overlay.nativeElement.style.display = 'flex';
-    this.showContainer();
-    setTimeout(() => {
-      this.overlay.nativeElement.style.opacity = '1';
-      this.overlay.nativeElement.style.transition = 'all ease 0.12s';
-    }, 0);
+    await this.showContainer();
+    this.overlay.nativeElement.style.opacity = '1';
+    this.overlay.nativeElement.style.transition = 'all ease 0.12s';
     //-
     this.shownModal = modal;
     this.isShowingModal = true;
   }
 
-  hide(modal: ModalComponent) {
+  async hide(modal: ModalComponent) {
     this.overlay.nativeElement.style.transition = 'all ease 0.12s';
     this.overlay.nativeElement.style.opacity = '0';
-    this.hideContainer();
-    setTimeout(() => {
-      this.overlay.nativeElement.style.display = 'none';
-    }, 120);
+    await this.hideContainer();
+    this.overlay.nativeElement.style.display = 'none';
     //-
     this.isShowingModal = false;
   }
@@ -81,6 +79,10 @@ export class ModalContainerComponent implements OnInit {
     })
   }
 
+  /**
+   * @returns The name of the class that is associated with the modal size
+   */
+  sizeToClass = (): string => ModalSize[this.shownModal?.size];
 
   ngOnInit(): void {
 

@@ -21,9 +21,26 @@ $modal-padding: 32px;
   .container {
     z-index: 300;
     min-width: 300px;
-    min-height: 300px;
     padding: 8px;
     opacity: 0;
     margin-top: -24;
   }
+
+
+}
+
+.container.small {
+  width: 50%;
+}
+
+.container.medium {
+  width: 64%;
+}
+
+.container.large {
+  width: 80%;
+}
+
+.container.xlarge {
+  width: 100%;
 }

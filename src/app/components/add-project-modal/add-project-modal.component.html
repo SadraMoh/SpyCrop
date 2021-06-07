@@ -1,17 +1,17 @@
-<app-modal [name]="'artyom'">
+<app-modal [name]="'artyom'" [size]="3">
     <div class="main mat-1 round shadow-lg">
         <aside class="type-selector">
             <h1>
                 New Project
             </h1>
             <nav class="nav">
-                <a routerLink="" routerLinkActive="active">Single Cam</a>
-                <a routerLink="" routerLinkActive="active">Double Cam</a>
-                <a routerLink="" routerLinkActive="active">Mass Edit</a>
+                <a (click)="navToSingleCam()">Single Cam</a>
+                <a (click)="navToDoubleCam()">Double Cam</a>
+                <a (click)="navToMassEditCam()">Mass Edit</a>
             </nav>
         </aside>
         <div class="options">
-
+            <router-outlet name="projectType"></router-outlet>
         </div>
     </div>
 </app-modal>

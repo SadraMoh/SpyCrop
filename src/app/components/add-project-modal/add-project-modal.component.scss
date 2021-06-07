@@ -9,23 +9,30 @@
     h1 {
       font-size: 2em;
       color: $text-2;
+      padding: 12px;
+      background-color: $material-4;
     }
 
     a {
       background-color: transparent;
       font-size: 1.2em;
+      padding: 12px 8px;
       color: $text-4;
       @include trans(0.32);
     }
 
     a:hover {
-        @include trans(0.16s);
-        background-color: rgba(150,150,150,0.8);
+      @include trans(0.16s);
+      background-color: rgba(150, 150, 150, 0.16);
     }
-    
+
     a.active {
-        background-color: transparentize($color: #3286ED, $amount: 0.92);
+      background-color: transparentize($color: #3286ED, $amount: 0.92);
     }
-    
+
+    .nav {
+      @include col;
+    }
+
   }
 }
