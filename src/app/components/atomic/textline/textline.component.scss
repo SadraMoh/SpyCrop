@@ -1,0 +1,55 @@
+@import "/src/styles/colors";
+
+.textline {
+  @include col;
+
+  .label {
+    color: $text-3;
+    font-size: 0.92em;
+    margin-bottom: 3px;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .container {
+    @include row;
+    background-color: transparent;
+    border-bottom: 2px $border-color solid;
+    @include trans;
+    transition-property: $border-color;
+
+    input {
+      background-color: transparent;
+      border: 0;
+      padding: 6px 8px;
+      margin-bottom: 2px;
+      padding-left: 0;
+      flex: auto;
+      font-size: 1em;
+    }
+
+    .icon {
+      @include col;
+      align-items: center;
+      justify-items: center;
+      border: 0;
+      background-color: transparent;
+      cursor: unset;
+
+      i {
+        padding: 6px;
+        font-size: 20px;
+        margin: auto;
+        color: lighten($color: $border-color, $amount: 2%);
+      }
+    }
+  }
+
+  .container:focus-within {
+    border-color: $primary-light;
+  }
+}
+
+.textbox.error .container {
+  border-color: $danger;
+}

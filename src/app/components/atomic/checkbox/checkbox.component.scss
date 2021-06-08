@@ -15,8 +15,8 @@
     input:focus + .text{
         color: $text-1;
     }
-    
-    $checkbox-size: 24px;
+
+    $checkbox-size: 22px;
     input{
         appearance: none;
         width: $checkbox-size;
@@ -31,25 +31,25 @@
     input:focus{
         border-color: $primary;
     }
-    
+
     input:checked{
         border-color: $primary;
         background-color: $primary;
     }
-    
+
     input:checked::after{
         content: "";
         position: relative;
         display: block;
-        width: 12px;
-        height: 6px;
-        margin-left: 3px;
-        margin-top: 3.5px;
+        width: 11px;
+        height: 5px;
+        margin-left: 2px;
+        margin-top: 3.2px;
         transform: rotate(-45deg);
-        $cborder: 2.5pt solid $text-1;
+        $cborder: 2.3pt solid $text-1;
         border-left: $cborder;
         border-bottom: $cborder;
         @include trans;
     }
-    
+
 }

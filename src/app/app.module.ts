@@ -23,6 +23,7 @@ import { ComponentsComponent } from './pages/components/components.component';
 import { CheckboxComponent } from './components/atomic/checkbox/checkbox.component';
 import { RadioComponent } from './components/atomic/radio/radio.component';
 import { TextboxComponent } from './components/atomic/textbox/textbox.component';
+import { TextlineComponent } from './components/atomic/textline/textline.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TextboxComponent } from './components/atomic/textbox/textbox.component'
     CheckboxComponent,
     RadioComponent,
     TextboxComponent,
+    TextlineComponent
   ],
   imports: [
     BrowserModule,

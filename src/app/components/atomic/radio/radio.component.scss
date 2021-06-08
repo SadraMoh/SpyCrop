@@ -15,8 +15,8 @@
     input:focus + .text{
         color: $text-1;
     }
-    
-    $checkbox-size: 24px;
+
+    $checkbox-size: 22px;
     input{
         appearance: none;
         width: $checkbox-size;
@@ -32,12 +32,12 @@
     input:focus{
         border-color: $primary;
     }
-    
+
     input:checked{
         border-color: $primary;
         background-color: $primary;
     }
-    
+
     input:checked::after{
         content: "";
         position: relative;
@@ -49,5 +49,5 @@
         @include trans;
         background-color: $text-1;
     }
-    
+
 }

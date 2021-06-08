@@ -1,6 +1,6 @@
-@import '/src/styles/colors';
+@import "/src/styles/colors";
 
-$aside-width: 164px;
+$aside-width: 172px;
 $header-height: 50px;
 $padding: 28px;
 
@@ -10,12 +10,17 @@ $padding: 28px;
   .m-header {
     height: $header-height;
     position: fixed;
-    top: $padding;
+    padding-top: $padding;
+    padding-bottom: $padding;
+    top: 0;
     left: $aside-width + $padding;
     right: $aside-width + $padding;
     @include row;
     align-items: center;
     gap: 12px;
+    z-index: 100;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(0deg, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 24%, rgba(20, 20, 20, 1) 100%);
   }
 
   .m-aside {
@@ -41,9 +46,8 @@ $padding: 28px;
 
       a.active {
         font-size: 1.5em;
-        color: $text-1
+        color: $text-1;
       }
-
     }
   }
 
@@ -56,24 +60,24 @@ $padding: 28px;
   }
 }
 
-@media only screen and (max-width: 1240px) {
-  .m{
+@media only screen and (max-width: 1364px) {
+  .m {
     .m-header {
       left: $aside-width + $padding;
       right: $padding;
     }
-  
+
     .m-aside {
       position: fixed;
       top: $header-height + $padding * 2;
       width: $aside-width;
       margin-right: $padding;
-  
+
       .navigation {
         padding-right: $padding;
         border-right: 2px solid $material-2;
         @include col;
-  
+
         a {
           text-align: right;
           font-size: 1em;
@@ -83,15 +87,14 @@ $padding: 28px;
           line-height: 32px;
           vertical-align: middle;
         }
-  
+
         a.active {
           font-size: 1.5em;
-          color: $text-1
+          color: $text-1;
         }
-  
       }
     }
-  
+
     .m-content {
       @include col;
       margin-left: $aside-width + $padding;

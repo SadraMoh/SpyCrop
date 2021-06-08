@@ -1,6 +1,6 @@
 @import '/src/styles/colors';
 
 .grid {
-  @include grid(320px);
+  @include grid(300px);
   gap: 16px;
 }

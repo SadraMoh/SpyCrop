@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'textbox',
@@ -9,6 +10,9 @@ export class TextboxComponent implements OnInit {
 
   constructor() { }
 
+  @Input("value")
+  public value: string = "";
+
   @Input("label")
   public label!: string;
 
@@ -18,7 +22,7 @@ export class TextboxComponent implements OnInit {
   @Input("icon")
   public icon!: string;
 
-  // generate an id for this instance if a label or placeholder is not present, used 
+  // generate an id for this instance if a label or placeholder is not present, used
   public guid: string = this.label?.replace(' ','') || this.placeholder?.replace(' ','') || "id" + Math.floor(Math.random() * 10000);
 
   @Output("iconClick")

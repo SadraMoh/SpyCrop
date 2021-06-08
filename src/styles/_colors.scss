@@ -1,17 +1,19 @@
-// -------------------- General -------------------- // 
+// -------------------- General -------------------- //
 
 $background-color: #141414;
 
 $primary:#1473E6;
 $primary-light: #46A0F5;
 
+$danger: #F52632;
+$danger-light: lighten($danger,8%);
 
 $text-1: #FCFCFC;
 $text-2: #CBCBCB;
 $text-3: #A2A2A0;
 $text-4: #70706D;
 
-// -------------------- Border -------------------- // 
+// -------------------- Border -------------------- //
 
 $border-color: #5a5a5a;
 $border: 1px solid $border-color;
@@ -24,7 +26,7 @@ $border: 1px solid $border-color;
   border-radius: 1000px;
 }
 
-// -------------------- Shadows -------------------- // 
+// -------------------- Shadows -------------------- //
 
 $base-shadow-color: #000;
 
@@ -77,7 +79,7 @@ $base-shadow-color: #000;
 }
 
 
-// -------------------- Cards -------------------- // 
+// -------------------- Cards -------------------- //
 
 $material-1: #373737;
 $material-2: #323232;
@@ -93,7 +95,7 @@ $card-padding : 8px;
   padding: $card-padding;
 }
 
-// -------------------- Layout -------------------- // 
+// -------------------- Layout -------------------- //
 
 @mixin row {
   display: flex;
@@ -115,7 +117,7 @@ $card-padding : 8px;
   flex-direction: column;
 }
 
-// -------------------- Utility -------------------- // 
+// -------------------- Utility -------------------- //
 
 @mixin trans($seconds: 0.2s) {
   transition: all ease $seconds;
