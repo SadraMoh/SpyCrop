@@ -2,9 +2,11 @@
 
 .main {
   @include row;
+  overflow: hidden;
 
   .type-selector {
     background-color: $material-3;
+    min-width: 236px;
 
     h1 {
       font-size: 2em;
@@ -16,9 +18,13 @@
     a {
       background-color: transparent;
       font-size: 1.2em;
-      padding: 12px 8px;
+      padding: 12px;
+      border-left: 3px transparent solid;
+      padding-left: 9px;
       color: $text-4;
       @include trans(0.32);
+      transition-property: color, background-color, border-color;
+      box-sizing: border-box;
     }
 
     a:hover {
@@ -28,6 +34,8 @@
 
     a.active {
       background-color: transparentize($color: #3286ED, $amount: 0.92);
+      color: lighten($color: $primary, $amount: 10%);
+      border-color: $primary;
     }
 
     .nav {
@@ -35,4 +43,12 @@
     }
 
   }
+
+  .options {
+    width: 100%;
+    @include col;
+    @include shadow-m;
+    padding: 24px;
+  }
+
 }

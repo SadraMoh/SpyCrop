@@ -1,0 +1,45 @@
+@import '/src/styles/colors';
+
+.textbox {
+  @include col;
+
+  .label {
+    color: $text-3;
+    font-size: .92em;
+    margin-bottom: 6px;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .container {
+    @include row;
+    @include border-def-radius;
+    border: $border;
+    background-color: #2A2A2A;
+
+    input {
+      background-color: transparent;
+      border: 0;
+      padding: 6px 8px;
+      flex: auto;
+      font-size: 1em;
+    }
+
+    .icon {
+      @include col;
+      align-items: center;
+      justify-items: center;
+      border: 0;
+      background-color: transparent;
+
+      i {
+        padding: 6px;
+        font-size: 20px;
+        margin: auto;
+        color: lighten($color: $border-color, $amount: 2%);
+      }
+    }
+
+  }
+
+}

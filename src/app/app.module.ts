@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,10 @@ import { ModalContainerComponent } from './components/modal-container/modal-cont
 import { AddProjectModalComponent } from './components/add-project-modal/add-project-modal.component';
 import { NewSingleCamComponent } from './components/add-project-modal/new-single-cam/new-single-cam.component';
 import { NewDoubleCamComponent } from './components/add-project-modal/new-double-cam/new-double-cam.component';
+import { ComponentsComponent } from './pages/components/components.component';
+import { CheckboxComponent } from './components/atomic/checkbox/checkbox.component';
+import { RadioComponent } from './components/atomic/radio/radio.component';
+import { TextboxComponent } from './components/atomic/textbox/textbox.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +41,16 @@ import { NewDoubleCamComponent } from './components/add-project-modal/new-double
     ModalDirective,
     AddProjectModalComponent,
     NewSingleCamComponent,
-    NewDoubleCamComponent
+    NewDoubleCamComponent,
+    ComponentsComponent,
+    CheckboxComponent,
+    RadioComponent,
+    TextboxComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

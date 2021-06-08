@@ -13,16 +13,21 @@ export class AddProjectModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectedView: string = 'workbenchSingleCam';
+
   navToSingleCam() {
     this.router.navigate([{ outlets: { 'projectType': ['workbenchSingleCam'] } }], { relativeTo: this.route.parent });
+    this.selectedView = 'workbenchSingleCam';
   }
 
   navToDoubleCam() {
     this.router.navigate([{ outlets: { 'projectType': ['workbenchDoubleCam'] } }], { relativeTo: this.route.parent });
+    this.selectedView = 'workbenchDoubleCam';
   }
 
-  navToMassEditCam() {
+  navToMassEdit() {
     this.router.navigate([{ outlets: { 'projectType': ['workbenchSingleCam'] } }], { relativeTo: this.route.parent });
+    this.selectedView = 'workbenchDoubleCams';
   }
 
 }

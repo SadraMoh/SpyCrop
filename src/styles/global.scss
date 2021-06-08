@@ -117,6 +117,27 @@ button {
 
 // BTN
 
+.btn {
+  border: 0;
+  padding: 8px 16px;
+  @include circle;
+  @include trans;
+}
+
+.btn.btn-secondary {
+  background-color: transparent;
+  color: $text-1;
+  border: 2px $text-1 solid;
+  box-sizing: border-box;
+  padding: 6px 14px;
+}
+
+.btn.btn-secondary:hover {
+  background-color: $text-1;
+  color: $material-3;
+}
+
+
 .btn-invis {
   background-color: transparent;
   cursor: pointer;
@@ -250,7 +271,6 @@ $table-padding : 8px;
   overflow: hidden;
   @include border-def-radius;
 }
-
 
 
 // #endregion Table

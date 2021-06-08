@@ -1,0 +1,55 @@
+@import '/src/styles/colors';
+
+.checkbox{
+    @include row;
+    align-items: center;
+    justify-items: flex-start;
+
+    .text {
+        margin-left: 8px;
+        cursor: pointer;
+        color: $text-2;
+        @include trans;
+    }
+
+    input:focus + .text{
+        color: $text-1;
+    }
+    
+    $checkbox-size: 24px;
+    input{
+        appearance: none;
+        width: $checkbox-size;
+        height: $checkbox-size;
+        background-color: transparent;
+        border-radius: 3px;
+        border: 2px solid $border-color;
+        @include trans;
+        cursor: pointer;
+    }
+
+    input:focus{
+        border-color: $primary;
+    }
+    
+    input:checked{
+        border-color: $primary;
+        background-color: $primary;
+    }
+    
+    input:checked::after{
+        content: "";
+        position: relative;
+        display: block;
+        width: 12px;
+        height: 6px;
+        margin-left: 3px;
+        margin-top: 3.5px;
+        transform: rotate(-45deg);
+        $cborder: 2.5pt solid $text-1;
+        border-left: $cborder;
+        border-bottom: $cborder;
+        @include trans;
+    }
+    
+}

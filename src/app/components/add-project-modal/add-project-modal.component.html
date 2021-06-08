@@ -5,9 +5,9 @@
                 New Project
             </h1>
             <nav class="nav">
-                <a (click)="navToSingleCam()">Single Cam</a>
-                <a (click)="navToDoubleCam()">Double Cam</a>
-                <a (click)="navToMassEditCam()">Mass Edit</a>
+                <a (click)="navToSingleCam()" [class.active]="selectedView == 'workbenchSingleCam'">Single Cam</a>
+                <a (click)="navToDoubleCam()" [class.active]="selectedView == 'workbenchDoubleCam'">Double Cam</a>
+                <a (click)="navToMassEdit()"  [class.active]="selectedView == 'workbenchDoubleCams'">Mass Edit</a>
             </nav>
         </aside>
         <div class="options">

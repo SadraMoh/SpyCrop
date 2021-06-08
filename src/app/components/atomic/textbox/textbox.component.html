@@ -1,0 +1,9 @@
+<div class="textbox">
+    <label class="label" [for]="textbox" *ngIf="label">{{ label }}</label>
+    <div class="container">
+        <input type="text" [placeholder]="placeholder" #textbox [attr.aria-label]="label ? null : guid">
+        <button (click)="iconClicked($event)" class="icon" *ngIf="icon">
+            <i class="material-icons">{{ icon }}</i>
+        </button>
+    </div>
+</div>
