@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProjectModalComponent } from './components/add-project-modal/add-project-modal.component';
+import { NewDoubleCamComponent } from './components/add-project-modal/new-double-cam/new-double-cam.component';
+import { NewSingleCamComponent } from './components/add-project-modal/new-single-cam/new-single-cam.component';
 import { ComponentsComponent } from './pages/components/components.component';
 import { AllComponent } from './pages/home/all/all.component';
 import { BookmarksComponent } from './pages/home/bookmarks/bookmarks.component';
@@ -20,9 +22,14 @@ const routes: Routes = [
       { path: 'Bookmarks', component: BookmarksComponent },
       { path: 'All', component: AllComponent },
       { path: 'Components', component: ComponentsComponent },
+      { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent },
+      { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent },
+
       //- Aux Routes
-      { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent, outlet: 'projectType' },
-      { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent, outlet: 'projectType' },
+      { path: 'newSingleCam', component: NewSingleCamComponent, outlet: 'projectType' },
+      { path: 'newDoubleCam', component: NewDoubleCamComponent, outlet: 'projectType' },
+
+     
 
     ]
   },

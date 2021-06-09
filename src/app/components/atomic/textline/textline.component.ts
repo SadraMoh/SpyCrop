@@ -16,6 +16,9 @@ export class TextlineComponent implements OnInit {
   @Input("label")
   public label!: string;
 
+  @Input("name")
+  public name!: string;
+  
   @Input("placeholder")
   public placeholder!: string;
 

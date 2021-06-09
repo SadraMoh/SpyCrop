@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,9 @@ export class TextboxComponent implements OnInit {
   @Input("label")
   public label!: string;
 
+  @Input("name")
+  public name!: string;
+
   @Input("placeholder")
   public placeholder!: string;
 
@@ -23,12 +26,12 @@ export class TextboxComponent implements OnInit {
   public icon!: string;
 
   // generate an id for this instance if a label or placeholder is not present, used
-  public guid: string = this.label?.replace(' ','') || this.placeholder?.replace(' ','') || "id" + Math.floor(Math.random() * 10000);
+  public guid: string = this.label?.replace(' ', '') || this.placeholder?.replace(' ', '') || "id" + Math.floor(Math.random() * 10000);
 
   @Output("iconClick")
   public iconClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
-  iconClicked(e: MouseEvent ): void {
+  iconClicked(e: MouseEvent): void {
     this.iconClick.emit(e);
   }
 

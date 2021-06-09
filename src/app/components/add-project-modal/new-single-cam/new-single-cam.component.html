@@ -1,1 +1,29 @@
-<p>new-single-cam works!</p>
+<form class="col">
+    <h1 style="margin-bottom: 12px;">
+        Single Cam Book Scan
+    </h1>
+    <input style="margin-top:12px" [formControl]="name" label="Book name"
+        placeholder="e.g Book of Death"/>
+
+    <!-- <div class="grid">
+        <div class="cell col">
+            <textbox style="margin-top:12px" [formControl]="name" [name]="'txt1'" label="Book name" placeholder="e.g Book of Death"></textbox>
+            <textbox style="margin-top:10px" name="txt2" label="location" placeholder="e.g C://newFolder" icon="disk">
+            </textbox>
+            <br>
+            <textline name="txt3" label="How to name files"></textline>
+        </div>
+        <div class="cell col">
+            <h4>Direction</h4>
+            <radio style="margin-top:12px" name="Direction" value="LTR" [checked]="true">Left To Right</radio>
+            <radio style="margin-top:10px" name="Direction" value="RTL">Right To Left</radio>
+        </div>
+    </div>
+    <div class="cell">
+
+    </div> -->
+
+    <div class="actions" style="margin-left: auto;">
+        <button class="btn btn-primary" (click)="createClick()" routerLink="">Create</button>
+    </div>
+</form>

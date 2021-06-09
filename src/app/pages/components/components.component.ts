@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit , ViewChild} from '@angular/core';
+import { TextboxComponent } from 'src/app/components/atomic/textbox/textbox.component';
 
 @Component({
   selector: 'app-components',
