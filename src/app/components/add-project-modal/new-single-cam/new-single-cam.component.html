@@ -1,13 +1,12 @@
-<form class="col">
+<div class="col">
     <h1 style="margin-bottom: 12px;">
         Single Cam Book Scan
     </h1>
-    <input style="margin-top:12px" [formControl]="name" label="Book name"
-        placeholder="e.g Book of Death"/>
 
-    <!-- <div class="grid">
+    <div class="grid">
         <div class="cell col">
-            <textbox style="margin-top:12px" [formControl]="name" [name]="'txt1'" label="Book name" placeholder="e.g Book of Death"></textbox>
+            <textbox style="margin-top:12px" name="txt1" label="Book name"
+                placeholder="e.g Book of Death"></textbox>
             <textbox style="margin-top:10px" name="txt2" label="location" placeholder="e.g C://newFolder" icon="disk">
             </textbox>
             <br>
@@ -21,9 +20,9 @@
     </div>
     <div class="cell">
 
-    </div> -->
+    </div>
 
     <div class="actions" style="margin-left: auto;">
-        <button class="btn btn-primary" (click)="createClick()" routerLink="">Create</button>
+        <button class="btn btn-primary" (click)="createClick()">Create</button>
     </div>
-</form>
+</div>

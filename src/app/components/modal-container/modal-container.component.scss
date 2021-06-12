@@ -30,17 +30,21 @@ $modal-padding: 32px;
 }
 
 .container.small {
-  width: 50%;
+  max-width: 400px;
+  width: 32%;
 }
 
 .container.medium {
-  width: 64%;
+  max-width: 600px;
+  width: 52%;
 }
 
 .container.large {
-  width: 80%;
+  max-width: 800px;
+  width: 72%;
 }
 
 .container.xlarge {
-  width: 100%;
+  max-width: 1200px;
+  width: 90%;
 }

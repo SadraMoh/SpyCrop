@@ -8,26 +8,22 @@ import { FormControl } from '@angular/forms';
   templateUrl: './new-single-cam.component.html',
   styleUrls: ['./new-single-cam.component.scss']
 })
-export class NewSingleCamComponent implements OnInit , AfterViewInit{
+export class NewSingleCamComponent implements OnInit, AfterViewInit {
+
+  name = new FormControl();
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngAfterViewInit(): void {
-    console.log(this.name.value);
   }
 
   ngOnInit(): void {
   }
 
   createClick(): void {
-    this.validateForms();
+    console.log(this.name);
   }
 
-  name = new FormControl('');
 
-  validateForms(): boolean {
-    console.log(this.name.value);
-    return true;
-  }
 
 }
