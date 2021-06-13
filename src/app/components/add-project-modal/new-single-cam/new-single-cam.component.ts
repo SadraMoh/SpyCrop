@@ -20,10 +20,17 @@ export class NewSingleCamComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  validate(): void {
+
+  }
+
   createClick(): void {
-    console.log(this.name);
+    this.validate();
+
+    this.router.navigate([{ outlets: { primary: 'workbenchSingleCam', projectType: null } }]);
   }
 
 
 
 }
+

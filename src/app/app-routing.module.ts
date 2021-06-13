@@ -22,17 +22,18 @@ const routes: Routes = [
       { path: 'Bookmarks', component: BookmarksComponent },
       { path: 'All', component: AllComponent },
       { path: 'Components', component: ComponentsComponent },
-      { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent },
-      { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent },
 
       //- Aux Routes
       { path: 'newSingleCam', component: NewSingleCamComponent, outlet: 'projectType' },
       { path: 'newDoubleCam', component: NewDoubleCamComponent, outlet: 'projectType' },
 
-     
-
     ]
   },
+  //- Workbench
+  { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent },
+  { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent },
+
+  //- Wildcard
   { path: '**', redirectTo: '' }
 ];
 

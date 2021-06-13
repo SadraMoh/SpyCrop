@@ -16,11 +16,19 @@ export class ModalService {
 
   }
 
+  /**
+   * Show a modal using it's reference
+   * @param modal A reference to the modal Component
+   */
   show(modal: ModalComponent): void {
     this.container.show(modal);
     modal.shown.emit();
   }
 
+  /**
+   * 
+   * @param modal A reference to the modal Component
+   */
   hide(modal: ModalComponent): void {
     this.container.hide(modal);
     modal.hidden.emit();

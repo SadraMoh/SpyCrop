@@ -1,0 +1,42 @@
+@import '/src/styles/colors';
+
+$ribbon-height: 20px;
+
+.workbench {
+  height: 100vh;
+  @include col;
+
+  .main {
+    @include row;
+    flex: auto;
+
+    .left {
+        background-color: $material-2;
+        width: 256px;
+
+        .project-info{
+            background-color: $material-3;
+            padding: $card-padding;
+        }
+        
+    }
+
+    .scene {
+        flex: auto;
+        width: auto;   
+    }
+
+    .right {
+        background-color: $material-3;
+        width: 300px;
+    }
+  }
+
+  .ribbon {
+    height: $ribbon-height;
+    background-color: $primary;
+    color: $text-1;
+
+  }
+
+}
