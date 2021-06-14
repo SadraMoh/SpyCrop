@@ -20,7 +20,7 @@ export class TextboxComponent implements OnInit {
   public name!: string;
 
   @Input("placeholder")
-  public placeholder!: string;
+  public placeholder: string = '';
 
   @Input("icon")
   public icon!: string;

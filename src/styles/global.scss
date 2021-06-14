@@ -20,6 +20,7 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
 html,
 body {
   background-color: $background-color;
+  overflow-x: hidden;
 }
 
 a {

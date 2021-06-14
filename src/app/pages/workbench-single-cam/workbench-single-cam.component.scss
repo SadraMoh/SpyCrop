@@ -4,38 +4,36 @@ $ribbon-height: 20px;
 
 .workbench {
   height: 100vh;
-  @include col;
+  @include row;
+  flex: auto;
 
-  .main {
-    @include row;
-    flex: auto;
+  .left {
+    background-color: $material-2;
+    width: 256px;
 
-    .left {
-        background-color: $material-2;
-        width: 256px;
-
-        .project-info{
-            background-color: $material-3;
-            padding: $card-padding;
-        }
-        
+    .project-info {
+      background-color: $material-3;
+      padding: $card-padding;
     }
 
-    .scene {
-        flex: auto;
-        width: auto;   
-    }
-
-    .right {
-        background-color: $material-3;
-        width: 300px;
-    }
   }
 
-  .ribbon {
-    height: $ribbon-height;
-    background-color: $primary;
-    color: $text-1;
+  .scene {
+    flex: auto;
+    width: auto;
+  }
+
+  .right {
+    background-color: $material-3;
+    width: 300px;
+    padding: $card-padding * 2;
+    gap: 12px;
+
+    hr.divider {
+      border: 0;
+      border-top: $border;
+      margin: #{$card-padding} #{$card-padding * -2};
+    }
 
   }
 
