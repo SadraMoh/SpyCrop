@@ -4,7 +4,7 @@
 
         </div>
         <div class="layers">
-
+            <app-page-single *ngFor="let page of pages"></app-page-single>
         </div>
     </div>
     <div class="scene">
@@ -20,9 +20,10 @@
         <h3>Image Options</h3>
         <textbox label="Brightness" icon="wb_sunny"></textbox>
         <textbox label="Contrast" icon="brightness_6"></textbox>
-        <textbox label="Contrast" icon="landscape"></textbox>
+        <textbox label="Sharpness" icon="landscape"></textbox>
         <textbox label="Despeckle" icon="blur_on"></textbox>
         <hr class="divider">
         <combo placeholder="combo..." label="HEllo" [ItemSource]="list" itemText="name"></combo>
+        <textbox label="Contrast" icon="landscape"></textbox>
     </div>
 </div>

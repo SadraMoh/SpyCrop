@@ -10,8 +10,20 @@ export class TextboxComponent implements OnInit {
 
   constructor() { }
 
+  private _value: string = "";
+
   @Input("value")
-  public value: string = "";
+  public set value(v: string) {
+    this._value = v;
+    this.valueChange.emit(this._value);
+  }
+
+  public get value(): string {
+    return this._value;
+  }
+
+  @Output("valueChange")
+  public valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Input("label")
   public label!: string;
