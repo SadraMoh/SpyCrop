@@ -6,14 +6,25 @@ $ribbon-height: 20px;
   height: 100vh;
   @include row;
   flex: auto;
+  overflow-y: hidden;
 
   .left {
-    background-color: $material-2;
+    background-color: $material-3;
     width: 256px;
+    @include col;
 
     .project-info {
-      background-color: $material-3;
+      position: relative;
+
+      background-color: $material-1;
       padding: $card-padding;
+      @include shadow-lg
+    }
+
+    .layers {
+      flex: auto;
+      height: auto;
+      overflow-y: auto;
     }
 
   }
@@ -21,6 +32,37 @@ $ribbon-height: 20px;
   .scene {
     flex: auto;
     width: auto;
+    padding: 50px;
+    position: relative;
+
+    .tools {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      @include row;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .picture {
+      position: relative;
+      height: 100%;
+      @include col;
+      justify-content: center;
+      align-items: center;
+
+      .mainImage {
+        max-width: 900px;
+        width: 100%;
+        @include shadow-xxlg;
+        border: 1px $material-2 solid;
+        pointer-events: none;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+    }
+
+
   }
 
   .right {

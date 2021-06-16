@@ -1,0 +1,44 @@
+@import '/src/styles/colors';
+
+$cropper-color:transparentize(rgb(190, 29, 118), 0.25);
+
+.cropper {
+  position: absolute;
+  min-width: 50px;
+  min-height: 50px;
+  border: 2px solid $cropper-color;
+  background-color: transparentize($color: $cropper-color, $amount: 0.5);
+  resize: both;
+  z-index: 500;
+  @include col;
+
+  .cropper-info {
+    position: absolute;
+    background-color: $cropper-color;
+    font-size: 0.64em;
+    margin-right: auto;
+    color: $text-2;
+    top: -15px;
+    left: -2px;
+    padding: 1px 4px;
+  }
+
+  $handlebar-thickness: 7px;
+
+  .corner {
+    width: $handlebar-thickness * 2;
+    height: $handlebar-thickness * 2;
+    background-color: green;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .handlebar {
+    min-width: $handlebar-thickness;
+    min-height: $handlebar-thickness;
+    background-color: blue;
+    position: absolute;
+    z-index: 9;
+  }
+
+}

@@ -26,7 +26,7 @@
       flex: auto;
       font-size: 1em;
     }
-    
+
     .icon {
       @include col;
       align-items: center;
@@ -44,6 +44,11 @@
         color: #828282;
       }
     }
+
+    .icon.clickable {
+      cursor: pointer;
+    }
+
   }
 
   .container:focus-within {
@@ -51,6 +56,6 @@
   }
 }
 
-.textbox.error .container{
+.textbox.error .container {
   border-color: $danger;
 }

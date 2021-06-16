@@ -26,6 +26,7 @@ import { TextboxComponent } from './components/atomic/textbox/textbox.component'
 import { TextlineComponent } from './components/atomic/textline/textline.component';
 import { ComboComponent } from './components/atomic/combo/combo.component';
 import { PageSingleComponent } from './components/page-single/page-single.component';
+import { CropperComponent } from './components/cropper/cropper.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PageSingleComponent } from './components/page-single/page-single.compon
     TextlineComponent,
     ComboComponent,
     PageSingleComponent,
+    CropperComponent,
   ],
   imports: [
     BrowserModule,

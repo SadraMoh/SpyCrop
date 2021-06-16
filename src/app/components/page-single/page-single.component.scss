@@ -1,0 +1,43 @@
+@import '/src/styles/colors';
+
+.page {
+  @include row;
+  padding: 16px 16px 16px calc(16px - 3px) ; //- the 3px is the border
+  height: 80px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+  border-left: solid transparent 3px;
+  //
+  @include trans;
+  transition-property: background-color , background-position-x, border-color;
+
+  .thumbnail {
+    height: auto;
+    background-color: $material-4;
+    width: 80px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .info {
+    @include col;
+    flex: auto;
+    padding: 12px;
+  }
+
+}
+
+.page:hover {
+  background-color: rgba(255, 255, 255, .08);
+}
+
+.page.selected {
+  background: linear-gradient(90deg, rgba(20, 115, 230, 0.32) 0%, rgba(20, 115, 230, 0) 85%);
+  background-size: calc(100% + 100px) 100%;
+  background-position-x: -100px;
+  border-left: solid $primary 3px;
+}
+
+.page.selected:hover {
+  background-position-x: 0;
+}

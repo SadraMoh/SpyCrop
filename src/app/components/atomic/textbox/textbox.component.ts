@@ -43,11 +43,17 @@ export class TextboxComponent implements OnInit {
   @Output("iconClick")
   public iconClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
+  iconClickHasSubscribers: boolean = false;
+
   iconClicked(e: MouseEvent): void {
     this.iconClick.emit(e);
   }
 
   ngOnInit(): void {
+
+    // check wether the iconClicked event has subscribers
+    this.iconClickHasSubscribers = this.iconClick.observers.length > 0;
+    
   }
 
 }

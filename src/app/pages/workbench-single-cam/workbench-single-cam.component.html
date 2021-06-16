@@ -1,20 +1,35 @@
 <div class="workbench">
     <div class="left">
         <div class="project-info">
-
+            <h2 style="margin-bottom: 8px;">
+                Book pName
+            </h2>
+            <textbox label="Folder location" value="C://hello world" icon="folder" (iconClick)="folderClicked()">
+            </textbox>
         </div>
         <div class="layers">
-            <app-page-single *ngFor="let page of pages"></app-page-single>
+            <app-page-single #component (click)="pageClicked(component)" *ngFor="let page of pages"></app-page-single>
         </div>
     </div>
     <div class="scene">
         <div class="tools">
-
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">crop</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">autorenew</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">flip</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span style="transform: rotate(90deg);" class="material-icons">flip</span>
+            </button>
         </div>
         <div class="picture">
-
+            <img class="mainImage" src="assets/img/Book.png" draggable="false" alt="">
+            <app-cropper></app-cropper>
         </div>
-
     </div>
     <div class="right col">
         <h3>Image Options</h3>
