@@ -56,8 +56,6 @@ $ribbon-height: 20px;
         width: 100%;
         @include shadow-xxlg;
         border: 1px $material-2 solid;
-        pointer-events: none;
-        -webkit-user-drag: none;
         user-select: none;
       }
     }
@@ -80,3 +78,4 @@ $ribbon-height: 20px;
   }
 
 }
+
