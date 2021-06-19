@@ -1,0 +1,136 @@
+@import "/src/styles/colors";
+
+.combo {
+  @include col;
+
+  .label {
+    color: $text-3;
+    font-size: 0.92em;
+    margin-bottom: 6px;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .container {
+    @include row;
+    @include border-def-radius;
+    border: $border;
+    background-color: #2a2a2a;
+    @include trans;
+    transition-property: $border-color;
+    position: relative;
+
+    input {
+      background-color: transparent;
+      border: 0;
+      padding: 6px 8px;
+      flex: auto;
+      font-size: 1em;
+    }
+
+    .icon {
+      @include col;
+      align-items: center;
+      justify-items: center;
+      border: 0;
+      background-color: transparent;
+
+      i {
+        padding: 6px;
+        // Remove padding between the icon and the input. the inputs padding-right is enough
+        padding-left: 0;
+        font-size: 20px;
+        margin: auto;
+        color: #828282;
+      }
+    }
+  }
+
+  .container:focus-within {
+    border-color: $primary-light;
+  }
+}
+
+.combo.error .container {
+  border-color: $danger;
+}
+
+$dropdown-background:#2a2a2a;
+
+.dropdown {
+  @include col;
+  @include border-def-radius;
+  border: $border;
+  background-color: $dropdown-background;
+  @include trans(.32s);
+  @include shadow-s;
+  list-style-type: none;
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 32px + 8;
+  max-height: 0;
+  overflow-y: overlay;
+
+  // @actual max-height: 36px * 8; // the max number of items to show on the drop down (the rest will be visible through scrolling)
+  // appear / dissapear values
+  //
+  transition-property: opacity, max-height;
+  opacity: 0;
+  transform-origin: top;
+  scroll-behavior: o;
+
+  li {
+    background-color: transparent;
+
+    .item {
+      // the height of each item is exactly 36px
+      background-color: transparent;
+      border: 0;
+      padding: $card-padding;
+      @include trans;
+      width: 100%;
+      text-align: left;
+    }
+
+    .item:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+  }
+
+  li:focus {
+    // TODO: Implement Tabindex
+    background-color: red;
+  }
+
+}
+
+.dropdown.open {
+  opacity: 1 !important;
+  max-height: 36px * 6;
+}
+
+// #region custom scrollbar
+/* width */
+.dropdown::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.dropdown::-webkit-scrollbar-thumb {
+  background: lighten($color: $dropdown-background, $amount: 16%);
+  @include circle;
+}
+
+/* Handle on hover */
+.dropdown::-webkit-scrollbar-thumb:hover {
+  background: lighten($color: $dropdown-background, $amount: 32%);
+}
+
+// #endregion

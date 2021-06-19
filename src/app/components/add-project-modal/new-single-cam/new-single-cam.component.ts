@@ -29,7 +29,6 @@ export class NewSingleCamComponent implements OnInit, AfterViewInit {
     this.validate();
 
     this.router.navigate([{ outlets: { primary: 'workbenchSingleCam', projectType: null } }]);
-
     this.modalService.callHide('artyom');
   }
 

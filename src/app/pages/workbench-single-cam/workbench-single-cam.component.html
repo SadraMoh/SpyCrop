@@ -1,27 +1,46 @@
 <div class="workbench">
-    <div class="main">
-        <div class="left">
-            <div class="project-info">
-                
-            </div>
-            <div class="layers">
-    
-            </div>
+    <div class="left">
+        <div class="project-info">
+            <h2 style="margin-bottom: 8px;">
+                Book pName
+            </h2>
+            <textbox label="Folder location" value="C://hello world" icon="folder" (iconClick)="folderClicked()">
+            </textbox>
         </div>
-        <div class="scene">
-            <div class="tools">
-                
-            </div>
-            <div class="picture">
-                
-            </div>
-            
+        <div class="layers">
+            <app-page-single #component (click)="pageClicked(component)" *ngFor="let page of pages"></app-page-single>
         </div>
-        <div class="right">
-    
-        </div>    
     </div>
-    <div class="ribbon">
+    <div class="scene">
+        <div class="tools">
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">crop</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">autorenew</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span class="material-icons">flip</span>
+            </button>
+            <button class="mat-btn btn-secondary shadow-lg">
+                <span style="transform: rotate(90deg);" class="material-icons">flip</span>
+            </button>
+        </div>
 
+        <app-cropper [boundryElement]="scene" style="position: absolute;"></app-cropper>
+
+        <div class="picture" #scene>
+            <img class="mainImage" src="assets/img/Book.png" draggable="false" alt="">
+        </div>
+    </div>
+    <div class="right col">
+        <h3>Image Options</h3>
+        <textbox label="Brightness" icon="wb_sunny"></textbox>
+        <textbox label="Contrast" icon="brightness_6"></textbox>
+        <textbox label="Sharpness" icon="landscape"></textbox>
+        <textbox label="Despeckle" icon="blur_on"></textbox>
+        <hr class="divider">
+        <combo placeholder="combo..." label="HEllo" [ItemSource]="list" itemText="name"></combo>
+        <textbox label="Contrast" icon="landscape"></textbox>
     </div>
 </div>

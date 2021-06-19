@@ -37,11 +37,18 @@
 
       i {
         padding: 6px;
+        // Remove padding between the icon and the input. the inputs padding-right is enough
+        padding-left: 0;
         font-size: 20px;
         margin: auto;
-        color: lighten($color: $border-color, $amount: 2%);
+        color: #828282;
       }
     }
+
+    .icon.clickable {
+      cursor: pointer;
+    }
+
   }
 
   .container:focus-within {
@@ -49,6 +56,6 @@
   }
 }
 
-.textbox.error .container{
+.textbox.error .container {
   border-color: $danger;
 }

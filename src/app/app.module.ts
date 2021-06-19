@@ -24,6 +24,9 @@ import { CheckboxComponent } from './components/atomic/checkbox/checkbox.compone
 import { RadioComponent } from './components/atomic/radio/radio.component';
 import { TextboxComponent } from './components/atomic/textbox/textbox.component';
 import { TextlineComponent } from './components/atomic/textline/textline.component';
+import { ComboComponent } from './components/atomic/combo/combo.component';
+import { PageSingleComponent } from './components/page-single/page-single.component';
+import { CropperComponent } from './components/cropper/cropper.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { TextlineComponent } from './components/atomic/textline/textline.compone
     RadioComponent,
     TextboxComponent,
     TextlineComponent,
+    ComboComponent,
+    PageSingleComponent,
+    CropperComponent,
   ],
   imports: [
     BrowserModule,

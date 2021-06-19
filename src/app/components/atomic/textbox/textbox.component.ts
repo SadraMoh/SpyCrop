@@ -10,8 +10,20 @@ export class TextboxComponent implements OnInit {
 
   constructor() { }
 
+  private _value: string = "";
+
   @Input("value")
-  public value: string = "";
+  public set value(v: string) {
+    this._value = v;
+    this.valueChange.emit(this._value);
+  }
+
+  public get value(): string {
+    return this._value;
+  }
+
+  @Output("valueChange")
+  public valueChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Input("label")
   public label!: string;
@@ -20,7 +32,7 @@ export class TextboxComponent implements OnInit {
   public name!: string;
 
   @Input("placeholder")
-  public placeholder!: string;
+  public placeholder: string = '';
 
   @Input("icon")
   public icon!: string;
@@ -31,11 +43,17 @@ export class TextboxComponent implements OnInit {
   @Output("iconClick")
   public iconClick: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
+  iconClickHasSubscribers: boolean = false;
+
   iconClicked(e: MouseEvent): void {
     this.iconClick.emit(e);
   }
 
   ngOnInit(): void {
+
+    // check wether the iconClicked event has subscribers
+    this.iconClickHasSubscribers = this.iconClick.observers.length > 0;
+    
   }
 
 }
