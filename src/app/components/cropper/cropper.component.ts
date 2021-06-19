@@ -20,6 +20,7 @@ export class CropperComponent implements OnInit {
 
     // Initalize mousemove observable
     this.mousemoveObservable$ = fromEvent(window, 'mousemove')
+    this.moveRotateObservable$ = fromEvent(window, 'mousemove')
 
   }
 
@@ -28,6 +29,11 @@ export class CropperComponent implements OnInit {
 
     // Stop resizing if user stopped holding mousedown anywhere in the page
     this.mousemoveSubscription$.unsubscribe();
+    this.moveRotateSubscription$.unsubscribe();
+
+    this.mouseX = null;
+    this.mouseY = null;
+
     this.grabbedCorner = Corner.none;
 
   }
@@ -41,113 +47,139 @@ export class CropperComponent implements OnInit {
   // #region Corners
 
   /** The corner that is currently grabbed */
-  grabbedCorner: Corner = Corner.none;
+  public grabbedCorner: Corner = Corner.none;
 
+  mouseX!: number | null;
+  mouseY!: number | null;
 
+  private readonly calibrator: number = 4;
 
-  mouseMove(e: MouseEvent) {
+  mouseMove(e: MouseEvent, sides: Side[] = [Side.none]) {
 
-    const calibrator: number = 4;
+    // Initialize cached mouse lcoation
+    this.mouseX ??= e.clientX;
+    this.mouseY ??= e.clientY;
+
+    // Get precise boundries and locations of items
+    const el = this.cropper.nativeElement;
+    const rect = el.getBoundingClientRect();
     const bound = this.boundry.getBoundingClientRect();
 
-    const el = this.cropper.nativeElement;
-    let rect = el.getBoundingClientRect();
-
-    const centralDistanceX: number = e.clientX - rect.x;
-    const centralDistanceY: number = e.clientY - rect.y;
-    
-    // console.log('cursor', e.clientX + ' ' + e.clientY)
-    // console.log(rect);
-
+    // Restrict movement and scaling to the boundry
     if (e.clientX < bound.left) return;
     if (e.clientX > bound.right) return;
     if (e.clientY < bound.top) return;
     if (e.clientY > bound.bottom) return;
 
+    // Calculate mouse disposition
+    const deltaX = e.clientX - this.mouseX;
+    const deltaY = e.clientY - this.mouseY;
 
-    switch (this.grabbedCorner) {
-      case Corner.top:
-        el.style.top = e.clientY - bound.y + 'px';
-        el.style.height = rect.height - calibrator - (e.clientY - rect.y) + 'px';
-        break
-      //-
-      case Corner.right:
-        el.style.width = e.clientX - rect.left + 'px';
-        break
-      //-
-      case Corner.bottom:
-        el.style.height = e.clientY - rect.top + 'px';
-        break
-      //-
-      case Corner.left:
-        el.style.left = e.clientX - bound.x + 'px';
-        el.style.width = rect.width - calibrator - (e.clientX - rect.x) + 'px';
-        break
-      //-
-      case Corner.topLeft:
-        el.style.top = e.clientY - bound.y + 'px';
-        el.style.height = rect.height - calibrator - (e.clientY - rect.y) + 'px';
-        el.style.left = e.clientX - bound.x + 'px';
-        el.style.width = rect.width - calibrator - (e.clientX - rect.x) + 'px';
-        break
-      //-
-      case Corner.topRight:
-        el.style.top = e.clientY - bound.y + 'px';
-        el.style.height = rect.height - calibrator - (e.clientY - rect.y) + 'px';
-        el.style.width = e.clientX - rect.left + 'px';
-        break
-      //-
-      case Corner.bottomRight:
-        el.style.height = e.clientY - rect.top + 'px';
-        el.style.width = e.clientX - rect.left + 'px';
-        break
-      //-
-      case Corner.bottomLeft:
-        el.style.height = e.clientY - rect.top + 'px';
-        el.style.left = e.clientX - bound.x + 'px';
-        el.style.width = rect.width - calibrator - (e.clientX - rect.x) + 'px';
-        break
-      //-
-      case Corner.center:
-        el.style.top = e.clientY + centralDistanceY - bound.y + 'px';
-        el.style.left = e.clientX + centralDistanceX - bound.x + 'px';
-        break
+    // Cache current mouse position for later calculation of disposition
+    this.mouseX = e.clientX;
+    this.mouseY = e.clientY;
 
+    if (sides.includes(Side.top)) {
+      el.style.top = (rect.y + deltaY) - bound.y + 'px';
+      el.style.height = rect.height - this.calibrator - deltaY + 'px';
     }
 
-    rect = el.getBoundingClientRect();
+    if (sides.includes(Side.right)) {
+      el.style.width = rect.width - this.calibrator + deltaX + 'px';
+    }
+
+    if (sides.includes(Side.bottom)) {
+      el.style.height = rect.height - this.calibrator + deltaY + 'px';
+    }
+
+    if (sides.includes(Side.left)) {
+      el.style.left = (rect.x + deltaX) - bound.x + 'px';
+      el.style.width = rect.width - this.calibrator - deltaX + 'px';
+    }
+
+    if (sides.includes(Side.center)) {
+      el.style.left = (rect.x + deltaX) - bound.x + 'px';
+      el.style.top = (rect.y + deltaY) - bound.y + 'px';
+    }
+
+    // For depiction in the UI
     this.cropperWidth = rect.width;
     this.cropperHeight = rect.height;
 
   }
 
-  tlDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.topLeft }
+  tlDown() { this.sub2MouseMove([Side.top, Side.left]); this.grabbedCorner = Corner.topLeft }
 
-  trDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.topRight }
+  trDown() { this.sub2MouseMove([Side.top, Side.right]); this.grabbedCorner = Corner.topRight }
 
-  brDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.bottomRight }
+  blDown() { this.sub2MouseMove([Side.bottom, Side.left]); this.grabbedCorner = Corner.bottomLeft }
 
-  blDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.bottomLeft }
-
-  //-
-
-  topDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.top }
-
-  rightDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.right }
-
-  bottomDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.bottom }
-
-  leftDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.left }
+  brDown() { this.sub2MouseMove([Side.bottom, Side.right]); this.grabbedCorner = Corner.bottomRight }
 
   //-
 
-  centerDown() { this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt)); this.grabbedCorner = Corner.center;  }
+  topDown() { this.sub2MouseMove([Side.top]); this.grabbedCorner = Corner.top }
+
+  rightDown() { this.sub2MouseMove([Side.right]); this.grabbedCorner = Corner.right }
+
+  bottomDown() { this.sub2MouseMove([Side.bottom]); this.grabbedCorner = Corner.bottom }
+
+  leftDown() { this.sub2MouseMove([Side.left]); this.grabbedCorner = Corner.left }
+
+  //-
+
+  centerDown() { this.sub2MouseMove([Side.center]); this.grabbedCorner = Corner.center; }
+
+  sub2MouseMove(sides: Side[] = [Side.none]): void {
+    this.mousemoveSubscription$?.unsubscribe();
+    this.mousemoveSubscription$ = this.mousemoveObservable$.subscribe((evt: any) => this.mouseMove(evt, sides));
+  }
 
   // #endregion Corners
 
+  moveRotateObservable$!: Observable<Event>
+  moveRotateSubscription$!: Subscription
+
+  rotateStartPointX: number = 0;
+  rotateStartPointY: number = 0;
+
+  cropperCenterX: number = 0;
+  cropperCenterY: number = 0;
+
+  /** Hypothenuse */
+  distanceFromCenter: number = 0;
+
+  rotateDown(e: MouseEvent): void {
+
+    this.rotateStartPointX = e.clientX;
+    this.rotateStartPointY = e.clientY;
+
+    const rect = this.cropper.nativeElement.getBoundingClientRect();
+
+    this.cropperCenterX = (rect.left + rect.right) / 2;
+    this.cropperCenterY = (rect.top + rect.bottom) / 2;
+
+    this.distanceFromCenter =
+      Math.sqrt(Math.pow(this.cropperCenterX - this.rotateStartPointX, 2) + Math.pow(this.cropperCenterY - this.rotateStartPointY, 2))
+
+    this.moveRotateSubscription$ = this.moveRotateObservable$.subscribe((evt: any) => this.moveRotateHandler(evt))
+  }
+
+  moveRotateHandler(e: MouseEvent): void {
+    const distance = (e.clientX - this.rotateStartPointX);
+
+    const deg = (Math.asin(distance / this.distanceFromCenter) * 180 * Math.PI);
+
+    this.cropper.nativeElement.style.transform = `rotate(${deg}deg)`;
+
+  }
 
 }
 
 enum Corner {
   none, topLeft, topRight, bottomRight, bottomLeft, top, right, bottom, left, center
+}
+
+enum Side {
+  none, top, right, bottom, left, center
 }

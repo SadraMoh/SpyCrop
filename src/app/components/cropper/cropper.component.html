@@ -1,5 +1,5 @@
 <div #cropper class="cropper" draggable="false">
-    <div class="cropper-info" (mousedown)="centerDown()" style="cursor: move;">
+    <div class="cropper-info" (mousedown)="rotateDown($event)" style="cursor: move;">
         <span>{{ cropperWidth }} X {{ cropperHeight }}</span>
     </div>
     <div class="handlebars-grid">
@@ -9,7 +9,7 @@
         <div class="corner" style="top: -5px; right: -5px; cursor: ne-resize;" (mousedown)="trDown()"></div>
         <div class="handlebar" style="top: -5px; bottom: -5px; right: -5px; cursor: e-resize;"
             (mousedown)="rightDown()"></div>
-        <div class="" (mousedown)="centerDown()"></div>
+        <div class="center" (mousedown)="centerDown()"></div>
         <div class="handlebar" style="left: -5px; right: -5px; bottom: -5px; cursor: s-resize;"
             (mousedown)="bottomDown()"></div>
         <div class="corner" style="bottom: -5px; right: -5px; cursor: se-resize" (mousedown)="brDown()"></div>

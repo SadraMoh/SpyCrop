@@ -9,7 +9,7 @@ $cropper-color:transparentize(rgb(190, 29, 118), 0.25);
   border: 2px solid $cropper-color;
   background-color: transparentize($color: $cropper-color, $amount: 0.5);
   resize: both;
-  z-index: 500;
+  z-index: 80;
   @include col;
 
   .cropper-info {
@@ -38,6 +38,16 @@ $cropper-color:transparentize(rgb(190, 29, 118), 0.25);
     min-height: $handlebar-thickness;
     position: absolute;
     z-index: 9;
+  }
+
+  .center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    cursor: move;
+    background-color: transparent;
   }
 
 }

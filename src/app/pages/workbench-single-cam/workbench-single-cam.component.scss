@@ -12,6 +12,8 @@ $ribbon-height: 20px;
     background-color: $material-3;
     width: 256px;
     @include col;
+    position: relative;
+    z-index: 100;
 
     .project-info {
       position: relative;
@@ -56,7 +58,7 @@ $ribbon-height: 20px;
         width: 100%;
         @include shadow-xxlg;
         border: 1px $material-2 solid;
-        user-select: none;
+        user-select: none !important;
       }
     }
 
@@ -68,6 +70,8 @@ $ribbon-height: 20px;
     width: 300px;
     padding: $card-padding * 2;
     gap: 12px;
+    z-index: 90;
+    position: relative;
 
     hr.divider {
       border: 0;
