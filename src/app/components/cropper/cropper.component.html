@@ -1,16 +1,20 @@
-<div #cropper class="cropper">
-    <div class="cropper-info">
-        <span>134 X 158</span>
+<div #cropper class="cropper" draggable="false">
+    <div class="cropper-info" (mousedown)="centerDown()" style="cursor: move;">
+        <span>{{ cropperWidth }} X {{ cropperHeight }}</span>
     </div>
     <div class="handlebars-grid">
-        <div class="corner" style="top: -2px; left: -2px; cursor: nw-resize;" (mousedown)="tlDown()"></div>
-        <div class="handlebar" style="left: -2px; right: -2px; top: -2px; cursor: n-resize;"></div>
-        <div class="corner" style="top: -2px; right: -2px; cursor: ne-resize;" (mousedown)="trDown()"></div>
-        <div class="handlebar" style="top: -2px; bottom: -2px; right: -2px; cursor: e-resize;"></div>
-        <div class=""></div>
-        <div class="handlebar" style="left: -2px; right: -2px; bottom: -2px; cursor: s-resize;"></div>
-        <div class="corner" style="bottom: -2px; right: -2px; cursor: se-resize" (mousedown)="brDown()"></div>
-        <div class="handlebar" style="top: -2px; bottom: -2px; left: -2px; cursor: w-resize;"></div>
-        <div class="corner" style="bottom: -2px; left: -2px; cursor: sw-resize" (mousedown)="blDown()"></div>
+        <div class="corner" style="top: -5px; left: -5px; cursor: nw-resize;" (mousedown)="tlDown()"></div>
+        <div class="handlebar" style="left: -5px; right: -5px; top: -5px; cursor: n-resize;" (mousedown)="topDown()">
+        </div>
+        <div class="corner" style="top: -5px; right: -5px; cursor: ne-resize;" (mousedown)="trDown()"></div>
+        <div class="handlebar" style="top: -5px; bottom: -5px; right: -5px; cursor: e-resize;"
+            (mousedown)="rightDown()"></div>
+        <div class="" (mousedown)="centerDown()"></div>
+        <div class="handlebar" style="left: -5px; right: -5px; bottom: -5px; cursor: s-resize;"
+            (mousedown)="bottomDown()"></div>
+        <div class="corner" style="bottom: -5px; right: -5px; cursor: se-resize" (mousedown)="brDown()"></div>
+        <div class="handlebar" style="top: -5px; bottom: -5px; left: -5px; cursor: w-resize;" (mousedown)="leftDown()">
+        </div>
+        <div class="corner" style="bottom: -5px; left: -5px; cursor: sw-resize" (mousedown)="blDown()"></div>
     </div>
 </div>

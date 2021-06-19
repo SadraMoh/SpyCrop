@@ -26,9 +26,10 @@
                 <span style="transform: rotate(90deg);" class="material-icons">flip</span>
             </button>
         </div>
-        <app-cropper></app-cropper>
 
-        <div class="picture">
+        <app-cropper [boundryElement]="scene" style="position: absolute;"></app-cropper>
+
+        <div class="picture" #scene>
             <img class="mainImage" src="assets/img/Book.png" draggable="false" alt="">
         </div>
     </div>
