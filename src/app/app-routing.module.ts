@@ -29,6 +29,7 @@ const routes: Routes = [
 
     ]
   },
+
   //- Workbench
   { path: 'workbenchSingleCam', component: WorkbenchSingleCamComponent },
   { path: 'workbenchDoubleCam', component: WorkbenchDoubleCamComponent },

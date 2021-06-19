@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-new-single-cam',
@@ -12,7 +13,7 @@ export class NewSingleCamComponent implements OnInit, AfterViewInit {
 
   name = new FormControl();
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService) { }
 
   ngAfterViewInit(): void {
   }
@@ -28,6 +29,8 @@ export class NewSingleCamComponent implements OnInit, AfterViewInit {
     this.validate();
 
     this.router.navigate([{ outlets: { primary: 'workbenchSingleCam', projectType: null } }]);
+
+    this.modalService.callHide('artyom');
   }
 
 
