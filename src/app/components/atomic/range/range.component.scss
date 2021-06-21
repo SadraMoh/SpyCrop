@@ -1,0 +1,73 @@
+@import '/src/styles/colors';
+
+.range {
+    width: 100%; 
+    height: 32px;
+    @include border-def-radius;
+    border: $border;
+    background-color: #2a2a2a;
+    @include row;
+    align-items: center;
+    @include trans;
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  
+    appearance: none;
+    outline: none; 
+    border: #2a2a2a solid 6px;
+    height: 1px;
+    flex: auto;
+    background: $border-color;
+  }
+  
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb, .slider::-moz-range-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    border: $border;
+    background-color: $material-3;
+    @include circle;
+    @include trans;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover::-webkit-slider-thumb {
+    background-color: $material-1;
+  }
+
+  .value {
+    -webkit-appearance: none !important; 
+    appearance: none !important;
+    background: transparent;
+    min-width: 0;
+    align-self: normal;
+    justify-self: revert;
+    border: 0;
+    border-left: $border;
+    padding: 6px;
+    width: 32px;
+  }
+  
+  .value[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    border-width: 0px;
+    margin: 0;
+    border-left: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    height: 32px;
+    width: 12px;
+    cursor: pointer;
+  }
+  
+}
+
+.range:focus-within {
+    border-color: $primary-light;
+}

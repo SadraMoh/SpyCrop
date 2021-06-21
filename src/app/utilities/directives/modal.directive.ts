@@ -6,11 +6,11 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 export class ModalDirective {
 
   @Input()
-  appModal : string = '';
-  
+  appModal: string = '';
+
   @HostListener('mouseenter')
   onMouseEnter() {
-    this.el.nativeElement.style.backgroundColor = this.appModal ;
+    this.el.nativeElement.style.backgroundColor = this.appModal;
   }
 
   @HostListener('mouseleave')

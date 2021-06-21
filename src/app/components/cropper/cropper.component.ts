@@ -6,7 +6,7 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
   templateUrl: './cropper.component.html',
   styleUrls: ['./cropper.component.scss']
 })
-export class CropperComponent implements OnInit {
+export class CropperComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
@@ -20,16 +20,18 @@ export class CropperComponent implements OnInit {
 
     // Initalize mousemove observable
     this.mousemoveObservable$ = fromEvent(window, 'mousemove')
-    this.moveRotateObservable$ = fromEvent(window, 'mousemove')
 
+  }
+
+  ngAfterViewInit(): void {
+    this.boundry ??= document.body;
   }
 
   @HostListener('window:mouseup', ['$event'])
   windowMouseup(e: any) {
 
     // Stop resizing if user stopped holding mousedown anywhere in the page
-    this.mousemoveSubscription$.unsubscribe();
-    this.moveRotateSubscription$.unsubscribe();
+    this.mousemoveSubscription$?.unsubscribe();
 
     this.mouseX = null;
     this.mouseY = null;
@@ -78,6 +80,12 @@ export class CropperComponent implements OnInit {
     // Cache current mouse position for later calculation of disposition
     this.mouseX = e.clientX;
     this.mouseY = e.clientY;
+
+    // Current left and top values
+    // const cleft = Number.parseInt(el.style.left.substring(0, el.style.left.length - 2));
+    // const ctop = Number.parseInt(el.style.top.substring(0, el.style.top.length - 2));
+    // const cwidth = Number.parseInt(el.style.width.substring(0, el.style.width.length - 2));
+    // const cheight = Number.parseInt(el.style.height.substring(0, el.style.height.length - 2));
 
     if (sides.includes(Side.top)) {
       el.style.top = (rect.y + deltaY) - bound.y + 'px';
@@ -136,44 +144,6 @@ export class CropperComponent implements OnInit {
   }
 
   // #endregion Corners
-
-  moveRotateObservable$!: Observable<Event>
-  moveRotateSubscription$!: Subscription
-
-  rotateStartPointX: number = 0;
-  rotateStartPointY: number = 0;
-
-  cropperCenterX: number = 0;
-  cropperCenterY: number = 0;
-
-  /** Hypothenuse */
-  distanceFromCenter: number = 0;
-
-  rotateDown(e: MouseEvent): void {
-
-    this.rotateStartPointX = e.clientX;
-    this.rotateStartPointY = e.clientY;
-
-    const rect = this.cropper.nativeElement.getBoundingClientRect();
-
-    this.cropperCenterX = (rect.left + rect.right) / 2;
-    this.cropperCenterY = (rect.top + rect.bottom) / 2;
-
-    this.distanceFromCenter =
-      Math.sqrt(Math.pow(this.cropperCenterX - this.rotateStartPointX, 2) + Math.pow(this.cropperCenterY - this.rotateStartPointY, 2))
-
-    this.moveRotateSubscription$ = this.moveRotateObservable$.subscribe((evt: any) => this.moveRotateHandler(evt))
-  }
-
-  moveRotateHandler(e: MouseEvent): void {
-    const distance = (e.clientX - this.rotateStartPointX);
-
-    const deg = (Math.asin(distance / this.distanceFromCenter) * 180 * Math.PI);
-
-    this.cropper.nativeElement.style.transform = `rotate(${deg}deg)`;
-
-  }
-
 }
 
 enum Corner {

@@ -1,5 +1,5 @@
 <div #cropper class="cropper" draggable="false">
-    <div class="cropper-info" (mousedown)="rotateDown($event)" style="cursor: move;">
+    <div class="cropper-info" (mousedown)="centerDown()" style="cursor: move;">
         <span>{{ cropperWidth }} X {{ cropperHeight }}</span>
     </div>
     <div class="handlebars-grid">
