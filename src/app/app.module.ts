@@ -28,6 +28,7 @@ import { ComboComponent } from './components/atomic/combo/combo.component';
 import { PageSingleComponent } from './components/page-single/page-single.component';
 import { CropperComponent } from './components/cropper/cropper.component';
 import { RangeComponent } from './components/atomic/range/range.component';
+import { DropComponent } from './components/atomic/drop/drop.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { RangeComponent } from './components/atomic/range/range.component';
     PageSingleComponent,
     CropperComponent,
     RangeComponent,
+    DropComponent,
   ],
   imports: [
     BrowserModule,

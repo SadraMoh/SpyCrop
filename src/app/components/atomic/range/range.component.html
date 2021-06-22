@@ -1,4 +1,11 @@
 <div class="range">
-    <input class="slider" type="range" [(ngModel)]="value" [min]="min" [max]="max">
-    <input class="value" type="number" [(ngModel)]="value">
+    <label class="label" [for]="valueInput" *ngIf="label">{{ label }}</label>
+    <div class="container">
+        <input class="value" type="number" [(ngModel)]="value" [step]="step" [min]="min" [max]="max" #valueInput>
+        <input class="slider" type="range" [(ngModel)]="value" [step]="step" [min]="min" [max]="max">
+        <button (click)="iconClicked($event)" [class.clickable]="iconClickHasSubscribers" class="icon" *ngIf="icon"
+            tabindex="-1">
+            <i class="material-icons">{{ icon }}</i>
+        </button>
+    </div>
 </div>
