@@ -29,6 +29,7 @@ import { PageSingleComponent } from './components/page-single/page-single.compon
 import { CropperComponent } from './components/cropper/cropper.component';
 import { RangeComponent } from './components/atomic/range/range.component';
 import { DropComponent } from './components/atomic/drop/drop.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DropComponent } from './components/atomic/drop/drop.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgxElectronModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

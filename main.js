@@ -1,22 +1,56 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, shell } = require('electron');
 
 let win;
-
-// try {
-// 	require('electron-reloader')(module);
-// } catch {}
 
 function createWindow() {
     // Create the browser window
     win = new BrowserWindow({
         width: 1366,
         height: 786,
-        backgroundColor: '#fefefe'
+        backgroundColor: '#fefefe',
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation : false
+        },
     })
 
     win.loadURL(`file://${__dirname}/dist/SpyCrop/index.html`);
 
-    win.webContents.openDevTools()
+    var menu = Menu.buildFromTemplate([
+        {
+            label: 'File',
+            submenu: [
+                {
+                    label: 'New'
+                },
+                { label: 'Open' },
+                {
+                    label: 'Recent',
+                    submenu: [
+                        { label: 'New_Book' }
+                    ]
+                },
+                {
+                    label: 'Close'
+                },
+                { type: 'separator' },
+                {
+                    label: 'Exit',
+                    click() {
+                        app.exit();
+                    }
+                }
+            ]
+        },
+        {
+            label: 'Devtools',
+            click() {
+                win.webContents.openDevTools()
+            }
+        }
+    ])
+
+    Menu.setApplicationMenu(menu);
 
     win.on('closed', () => {
         win = null
