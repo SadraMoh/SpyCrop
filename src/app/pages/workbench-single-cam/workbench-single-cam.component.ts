@@ -1,24 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
-import { electron } from 'process';
-import { VirtualTimeScheduler } from 'rxjs';
+import { TextboxComponent } from 'src/app/components/atomic/textbox/textbox.component';
 import { PageSingleComponent } from 'src/app/components/page-single/page-single.component';
+import { FilesystemService } from 'src/app/services/filesystem.service';
+import { Image } from "src/app/models/image";
+import * as Path from "path";
 
 @Component({
   selector: 'app-workbench-single-cam',
   templateUrl: './workbench-single-cam.component.html',
   styleUrls: ['./workbench-single-cam.component.scss']
 })
-export class WorkbenchSingleCamComponent implements OnInit {
+export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
-  constructor(private _electron: ElectronService) { }
+  @ViewChild('scene')
+  scene!: ElementRef<HTMLDivElement>;
+
+  img!: HTMLImageElement;
+
+  constructor(
+    private _electron: ElectronService,
+    private fs: FilesystemService
+  ) {
+
+    // Init file state Handlers
+    this.fileAdded.subscribe((path: string) => { this.fileAddedHandler(path) });
+    this.fileRemoved.subscribe((path: string) => { this.fileRemovedHandler(path) });
+
+  }
+
+  ngAfterViewInit(): void {
+    this.img = this.scene.nativeElement.querySelector('img') as HTMLImageElement;
+  }
 
   ngOnInit(): void {
   }
 
-  selectedPage!: PageSingleComponent;
+  watchedFolder!: string
 
-  pages: object[] = [{}, {}, {}, {}, {}, {}, {}, {}, {},]
+  selectedPage!: PageSingleComponent;
 
   list = [
     { id: 0, name: 'banana' },
@@ -35,26 +55,87 @@ export class WorkbenchSingleCamComponent implements OnInit {
 
   e: object = {};
 
-  folderClicked(): void {
-    this._electron.shell.beep();
-    // console.log(this._electron)
-    // console.log(this._electron.clipboard)
-    // console.log(this._electron.crashReporter)
-    // console.log(this._electron.desktopCapturer)
-    // console.log(this._electron.ipcRenderer)
-    // console.log(this._electron.isArm)
-    // console.log(this._electron.isElectronApp)
-    // console.log(this._electron.isLinux)
-    // console.log(this._electron.isMacOS)
-    // console.log(this._electron.isWindows)
-    // console.log(this._electron.isX64)
-    // console.log(this._electron.isX86)
-    // console.log(this._electron.nativeImage)
-    // console.log(this._electron.process)
-    // console.log(this._electron.remote)
-    // console.log(this._electron.screen)
-    // console.log(this._electron.shell)
-    // console.log(this._electron.webFrame)
+  folderClicked() {
+
+    const ans = this.fs.openFolderDialog();
+
+    if (ans.canceled) return;
+
+    this.watchedFolder = ans.filePaths[0];
+
+    this.startWatching();
+
+  }
+
+  watchTimer!: NodeJS.Timeout
+  readonly timerInterval: number = 768;
+
+  startWatching(): void {
+    this.watchTimer = setInterval(() => { this.watch() }, this.timerInterval);
+  }
+
+  stopWatching(): void {
+    clearInterval(this.watchTimer);
+  }
+
+  cachedFiles: string[] = [];
+
+  images: Image[] = [];
+
+  readonly acceptedFileTypes: string[] = [
+    '.jpg',
+    '.jpeg',
+    '.png',
+  ]
+
+  watch(): void {
+
+    let check = this.fs.readdir(this.watchedFolder);
+
+    // Ignore unsupported file types
+    check = check.filter(i => this.acceptedFileTypes.includes(Path.extname(i)));
+
+    // Files that are present in cache but not in the new check | DELETED Files
+    this.cachedFiles.filter(file => !check.includes(file)).forEach(deletedFile => {
+      this.fileRemoved.emit(Path.join(this.watchedFolder, deletedFile));
+    });
+
+    // Files that are present in the check but aren't on the cache |ADDED Files
+    check.filter(file => !this.cachedFiles.includes(file)).forEach(addedFile => {
+      this.fileAdded.emit(Path.join(this.watchedFolder, addedFile));
+    });
+
+    this.cachedFiles = check;
+
+  }
+
+  /** When a file is added to the watched folder */
+  fileAdded: EventEmitter<string> = new EventEmitter<string>();
+
+  /** When a file in the watcehd folder is removed */
+  fileRemoved: EventEmitter<string> = new EventEmitter<string>();
+
+  fileAddedHandler(path: string): void {
+
+    console.log('addedfile', path);
+
+    const fileStats = this.fs.stat(path);
+
+    const buff = this.fs.readFile(path);
+
+    const newImg = new Image(path, fileStats, buff);
+
+    this.images.push(newImg);
+
+
+  }
+
+  fileRemovedHandler(path: string): void {
+
+    const deletedImage: Image = this.images.filter(i => i.path === path)[0];
+
+    this.images.splice(this.images.indexOf(deletedImage), 1);
+
   }
 
   pageClicked(e: PageSingleComponent): void {
@@ -63,6 +144,7 @@ export class WorkbenchSingleCamComponent implements OnInit {
 
     this.selectedPage = e;
     e.selected = true;
+
   }
 
 

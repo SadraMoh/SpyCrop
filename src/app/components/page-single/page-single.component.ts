@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Image } from "src/app/models/image";
 
 @Component({
   selector: 'app-page-single',
@@ -8,8 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PageSingleComponent implements OnInit {
 
   @Input('selected')
-  public selected: boolean =  false;
-  
+  public selected: boolean = false;
+
+  @Input('image')
+  public image!: Image;
+
   constructor() { }
 
   ngOnInit(): void {

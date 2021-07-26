@@ -34,9 +34,9 @@ export class RangeComponent implements OnInit {
     // filter value before asigning it
     this._value = this.filterValue(v);
 
+    if (!this.valueInput) return
     // force update input value
     this.valueInput.nativeElement.value = this._value + '';
-
     // resize value input to fit the value
     this.valueInput.nativeElement.style.width = this.valueInput.nativeElement.value.length + 'ch';
   }

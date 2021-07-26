@@ -2,20 +2,28 @@
     <div class="left">
         <div class="project-info">
             <h2 style="margin-bottom: 8px;">
-                Book pName
+                Book Name
             </h2>
-            <textbox label="Folder location" value="C://hello world" icon="folder" (iconClick)="folderClicked()">
+            <textbox #tssd label="Folder location" placeholder="Choose a folder" [value]="watchedFolder"
+                [readonly]="true" icon="folder" (iconClick)="folderClicked()">
             </textbox>
         </div>
         <div class="layers">
-            <app-page-single #component (click)="pageClicked(component)" *ngFor="let page of pages"></app-page-single>
+            <app-page-single #component *ngFor="let page of images" [image]="page" (click)="pageClicked(component)" >
+            </app-page-single>
         </div>
     </div>
     <div class="scene">
         <div class="tools">
-            <button class="mat-btn btn-secondary shadow-lg">
+            <button #crop class="mat-btn btn-secondary shadow-lg">
                 <span class="material-icons">crop</span>
             </button>
+
+            <drop [parent]="crop">
+
+
+            </drop>
+
             <button class="mat-btn btn-secondary shadow-lg">
                 <span class="material-icons">autorenew</span>
             </button>
@@ -30,7 +38,7 @@
         <app-cropper [boundryElement]="scene" style="position: absolute;"></app-cropper>
 
         <div class="picture" #scene>
-            <img class="mainImage" src="assets/img/Book.png" draggable="false" alt="">
+            <img class="mainImage" [src]="selectedPage?.image?.src ?? 'assets/img/Book.png'" draggable="false" alt="">
         </div>
     </div>
     <div class="right col">
@@ -41,6 +49,6 @@
         <textbox label="Despeckle" icon="blur_on"></textbox>
         <hr class="divider">
         <combo placeholder="combo..." label="Combobox" [ItemSource]="list" itemText="name"></combo>
-        <range [min]="3" [max]="17" [step]="3" label="Saturation" icon="blur_on"></range>
+        <range [value]="0" [min]="2" [max]="18" [step]="1" label="Saturation" icon="blur_on"></range>
     </div>
 </div>
