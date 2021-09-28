@@ -61,21 +61,21 @@ export class ModalContainerComponent implements OnInit {
     }
   }
 
-  private showContainer(): Promise<null> {
+  private showContainer(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.container.nativeElement.style.opacity = '1';
       this.container.nativeElement.style.marginTop = '0';
       this.container.nativeElement.style.transition = 'all ease 0.12s';
-      setTimeout(() => { return resolve(null) }, 120);
+      setTimeout(() => { return resolve() }, 120);
     })
   }
 
-  private hideContainer(): Promise<null> {
+  private hideContainer(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.container.nativeElement.style.opacity = '0';
       this.container.nativeElement.style.marginTop = '-24px';
       this.container.nativeElement.style.transition = 'all ease 0.12s';
-      setTimeout(() => { return resolve(null) }, 120);
+      setTimeout(() => { return resolve() }, 120);
     })
   }
 

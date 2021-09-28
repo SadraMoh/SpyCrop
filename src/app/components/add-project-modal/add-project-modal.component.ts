@@ -14,7 +14,6 @@ export class AddProjectModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedView = this.route.snapshot.children.filter(i => i.routeConfig?.outlet === 'projectType')[0]?.routeConfig?.path || '';
-    console.log(this.selectedView);
   }
 
   navToSingleCam() {

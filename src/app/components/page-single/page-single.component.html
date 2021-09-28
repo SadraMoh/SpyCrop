@@ -1,7 +1,8 @@
 <div class="page" [class.selected]="selected">
-    <img class="thumbnail" src="assets/img/Book.png" alt="">
+    <!-- <img class="thumbnail" src="assets/img/Book.png" alt=""> -->
+    <img class="thumbnail" [src]="image.src" alt="">
     <div class="info">
-        <h5>Image - LF - 001</h5>
-        <span>46.7 kb</span>
+        <h5>{{ image.name }} - LF - 001</h5>
+        <span>{{ image.size | fileSize }}</span>
     </div>
 </div>

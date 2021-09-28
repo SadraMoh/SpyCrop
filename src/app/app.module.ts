@@ -30,6 +30,7 @@ import { CropperComponent } from './components/cropper/cropper.component';
 import { RangeComponent } from './components/atomic/range/range.component';
 import { DropComponent } from './components/atomic/drop/drop.component';
 import { NgxElectronModule } from 'ngx-electron';
+import { FileSizePipe } from './utilities/pipes/file-size.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NgxElectronModule } from 'ngx-electron';
     CropperComponent,
     RangeComponent,
     DropComponent,
+    FileSizePipe,
   ],
   imports: [
     BrowserModule,

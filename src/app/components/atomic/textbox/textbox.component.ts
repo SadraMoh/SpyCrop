@@ -37,6 +37,10 @@ export class TextboxComponent implements OnInit {
   @Input("icon")
   public icon!: string;
 
+  @Input("readonly")
+  public readonly!: boolean;
+
+
   // generate an id for this instance if a label or placeholder is not present, used
   public guid: string = this.label?.replace(' ', '') || this.placeholder?.replace(' ', '') || "id" + Math.floor(Math.random() * 10000);
 
