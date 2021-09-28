@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "main.js",
   "watch": {
-    "test": {
+    "el": {
       "patterns": [
         "src",
         "test"
@@ -12,7 +12,7 @@
       "ignore": "src/vendor/external.min.js",
       "quiet": false,
       "legacyWatch": false,
-      "delay": 0,
+      "delay": 2000,
       "runOnChangeOnly": false
     }
   },
@@ -46,8 +46,9 @@
     "@angular/cli": "~12.0.1",
     "@angular/compiler-cli": "~12.0.1",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^15.12.4",
+    "@types/node": "^15.12.5",
     "electron": "^13.0.0",
+    "electron-rebuild": "^2.3.5",
     "electron-reloader": "^1.2.1",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",

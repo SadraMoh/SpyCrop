@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
-import { electron } from 'process';
-import { VirtualTimeScheduler } from 'rxjs';
 import { PageSingleComponent } from 'src/app/components/page-single/page-single.component';
+import { NgxfsService } from 'src/app/services/ngxfs.service';
 
 @Component({
   selector: 'app-workbench-single-cam',
@@ -11,7 +10,10 @@ import { PageSingleComponent } from 'src/app/components/page-single/page-single.
 })
 export class WorkbenchSingleCamComponent implements OnInit {
 
-  constructor(private _electron: ElectronService) { }
+  constructor(
+    private _electron: ElectronService,
+    private fs: NgxfsService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +39,8 @@ export class WorkbenchSingleCamComponent implements OnInit {
 
   folderClicked(): void {
     this._electron.shell.beep();
+    console.log(this.fs.fs);
+    console.log(typeof (this.fs.fs))
     // console.log(this._electron)
     // console.log(this._electron.clipboard)
     // console.log(this._electron.crashReporter)
@@ -48,7 +52,7 @@ export class WorkbenchSingleCamComponent implements OnInit {
     // console.log(this._electron.isMacOS)
     // console.log(this._electron.isWindows)
     // console.log(this._electron.isX64)
-    // console.log(this._electron.isX86)
+    // console.log(this._electron.isX86) 
     // console.log(this._electron.nativeImage)
     // console.log(this._electron.process)
     // console.log(this._electron.remote)
