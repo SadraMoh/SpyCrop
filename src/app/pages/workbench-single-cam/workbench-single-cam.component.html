@@ -38,7 +38,8 @@
         <app-cropper [boundryElement]="scene" style="position: absolute;"></app-cropper>
 
         <div class="picture" #scene>
-            <img class="mainImage" [src]="selectedPage?.image?.src ?? 'assets/img/Book.png'" draggable="false" alt="">
+            <!-- <img class="mainImage" [src]="selectedPage?.image?.src ?? 'assets/img/Book.png'" draggable="false" alt=""> -->
+            <canvas #canvas class="mainImage"></canvas>
         </div>
     </div>
     <div class="right col">
