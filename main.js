@@ -7,8 +7,8 @@ let win;
 function createWindow() {
     // Create the browser window
     win = new BrowserWindow({
-        width: 1400,
-        height: 800,
+        width: 1600,
+        height: 1000,
         backgroundColor: '#fefefe',
         webPreferences: {
             nodeIntegration: true,
@@ -18,7 +18,7 @@ function createWindow() {
     })
 
     win.loadURL(`file://${__dirname}/dist/SpyCrop/index.html`);
-
+    
     win.webContents.openDevTools()
 
     var menu = Menu.buildFromTemplate([

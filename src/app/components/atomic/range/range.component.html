@@ -1,5 +1,5 @@
 <div class="range">
-    <label class="label" [for]="valueInput" *ngIf="label">{{ label }}</label>
+    <label class="label" tabindex="-1" [for]="valueInput" *ngIf="label">{{ label  }}</label>
     <div class="container">
         <input class="value" type="number" [(ngModel)]="value" [step]="step" [min]="min" [max]="max" #valueInput>
         <input class="slider" type="range" [(ngModel)]="value" [step]="step" [min]="min" [max]="max">

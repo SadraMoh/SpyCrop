@@ -22,6 +22,11 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas')
   canvas!: ElementRef<HTMLCanvasElement>;
 
+  brightness: number = 0;
+  contrast: number = 0;
+  sharpness: number = 0;
+  saturation: number = 0;
+
   img!: HTMLImageElement;
 
   rext!: RextEditor;
@@ -51,40 +56,14 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
   _selectedPage!: PageSingleComponent;
 
+  /** Selection Changed */
   public set selectedPage(v: PageSingleComponent) {
     this._selectedPage = v;
 
     // Selection Changed
 
     this.rext.load(this.selectedPage.image.src);
-    this.rext.updateParams({
-      atmosferic_light: 100,
-      hdr: 0,
-      exposure: 0,
-      temperature: 0,
-      tint: 0,
-      brightness: 0,
-      saturation: 0,
-      contrast: 0,
-      sharpen: 0,
-      masking: 0,
-      sharpen_radius: 0,
-      radiance: 0,
-      highlights: 0,
-      shadows: 0,
-      whites: 0,
-      blacks: 0,
-      dehaze: 0,
-      bAndW: 0,
-      lightFill: 0,
-      lightColor: 0,
-      lightSat: 0,
-      darkFill: 0,
-      darkColor: 0,
-      darkSat: 0,
-      rotation: 0
-    })
-
+    
   }
 
   public get selectedPage(): PageSingleComponent {
@@ -105,7 +84,35 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
     { id: 9, name: 'blueberry' },
   ]
 
-  e: object = {};
+  optionsChanged() {
+    this.rext?.updateParams({
+      atmosferic_light: 0,
+      hdr: 0,
+      exposure: 0,
+      temperature: 0,
+      tint: 0,
+      brightness: this.brightness,
+      saturation: this.saturation,
+      contrast: this.contrast,
+      sharpen: this.sharpness,
+      masking: 0,
+      sharpen_radius: 0,
+      radiance: 0,
+      highlights: 0,
+      shadows: 0,
+      whites: 0,
+      blacks: 0,
+      dehaze: 0,
+      bAndW: 0,
+      lightFill: 0,
+      lightColor: 0,
+      lightSat: 0,
+      darkFill: 0,
+      darkColor: 0,
+      darkSat: 0,
+      rotation: 0
+    })
+  }
 
   folderClicked() {
 
