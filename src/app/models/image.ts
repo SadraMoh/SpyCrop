@@ -11,17 +11,24 @@ export class Image {
 
     size: number = 0;
 
+    // /** data:image */
+    // public get src(): string {
+    //     // data:image/jpg;base64,4s6v5d4asdv84...
+    //     return `data:image/${this.format.replace('.', '')};base64,` + this.base64;
+    // }
+
+    /** data:image */
     public get src(): string {
         // data:image/jpg;base64,4s6v5d4asdv84...
-        return `data:image/${this.format.replace('.','')};base64,` + this.base64;
+        return this.img.src;
     }
 
+    /** img tag */
+    img: HTMLImageElement = document.createElement('img');
 
-    base64: string = '';
+    // base64: string = '';
 
-    buffer: Uint8Array = new Uint8Array();
-
-    constructor(path: string, stat: fs.Stats, buffer: Uint8Array) {
+    constructor(path: string, stat: fs.Stats, buffer: Buffer) {
 
         this.path = path;
         this.name = Path.basename(this.path);
@@ -29,7 +36,11 @@ export class Image {
 
         this.size = stat.size;
 
-        this.base64 = Image.bufferToBase64(buffer);
+        // this.base64 = Image.bufferToBase64(buffer);
+        const base64 = Image.bufferToBase64(buffer);
+
+
+        this.img.src = `data:image/${this.format.replace('.','')};base64,${base64}`;
 
     }
 

@@ -5,6 +5,9 @@ import { PageSingleComponent } from 'src/app/components/page-single/page-single.
 import { FilesystemService } from 'src/app/services/filesystem.service';
 import { Image } from "src/app/models/image";
 import * as Path from "path";
+import { RextEditor } from 'rext-image-editor'
+import { Params } from 'rext-image-editor/dist/models/models';
+import { defaultParams } from 'rext-image-editor/dist/lib/constants';
 
 @Component({
   selector: 'app-workbench-single-cam',
@@ -16,7 +19,17 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   @ViewChild('scene')
   scene!: ElementRef<HTMLDivElement>;
 
+  @ViewChild('canvas')
+  canvas!: ElementRef<HTMLCanvasElement>;
+
+  brightness: number = 0;
+  contrast: number = 0;
+  sharpness: number = 0;
+  saturation: number = 0;
+
   img!: HTMLImageElement;
+
+  rext!: RextEditor;
 
   constructor(
     private _electron: ElectronService,
@@ -31,14 +44,32 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.img = this.scene.nativeElement.querySelector('img') as HTMLImageElement;
+
+    this.rext = new RextEditor(this.canvas.nativeElement);
   }
 
   ngOnInit(): void {
+
   }
 
   watchedFolder!: string
 
-  selectedPage!: PageSingleComponent;
+  _selectedPage!: PageSingleComponent;
+
+  /** Selection Changed */
+  public set selectedPage(v: PageSingleComponent) {
+    this._selectedPage = v;
+
+    // Selection Changed
+
+    this.rext.load(this.selectedPage.image.src);
+    
+  }
+
+  public get selectedPage(): PageSingleComponent {
+    return this._selectedPage;
+  }
+
 
   list = [
     { id: 0, name: 'banana' },
@@ -53,7 +84,35 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
     { id: 9, name: 'blueberry' },
   ]
 
-  e: object = {};
+  optionsChanged() {
+    this.rext?.updateParams({
+      atmosferic_light: 0,
+      hdr: 0,
+      exposure: 0,
+      temperature: 0,
+      tint: 0,
+      brightness: this.brightness,
+      saturation: this.saturation,
+      contrast: this.contrast,
+      sharpen: this.sharpness,
+      masking: 0,
+      sharpen_radius: 0,
+      radiance: 0,
+      highlights: 0,
+      shadows: 0,
+      whites: 0,
+      blacks: 0,
+      dehaze: 0,
+      bAndW: 0,
+      lightFill: 0,
+      lightColor: 0,
+      lightSat: 0,
+      darkFill: 0,
+      darkColor: 0,
+      darkSat: 0,
+      rotation: 0
+    })
+  }
 
   folderClicked() {
 
@@ -126,7 +185,6 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
     const newImg = new Image(path, fileStats, buff);
 
     this.images.push(newImg);
-
 
   }
 

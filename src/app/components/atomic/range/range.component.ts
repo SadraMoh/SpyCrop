@@ -32,13 +32,16 @@ export class RangeComponent implements OnInit {
   public set value(v: number) {
 
     // filter value before asigning it
-    this._value = this.filterValue(v);
+    this._value = v = this.filterValue(v);
 
+    this.valueChange.emit(v);
+    
     if (!this.valueInput) return
     // force update input value
     this.valueInput.nativeElement.value = this._value + '';
     // resize value input to fit the value
     this.valueInput.nativeElement.style.width = this.valueInput.nativeElement.value.length + 'ch';
+
   }
 
   public get value(): number {

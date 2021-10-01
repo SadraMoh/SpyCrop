@@ -39,6 +39,7 @@
     "ngx-electron": "^2.2.0",
     "npm-watch": "^0.10.0",
     "path": "^0.12.7",
+    "rext-image-editor": "^1.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "watch": "^1.0.2",
