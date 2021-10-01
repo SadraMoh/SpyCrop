@@ -31,6 +31,7 @@ import { RangeComponent } from './components/atomic/range/range.component';
 import { DropComponent } from './components/atomic/drop/drop.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { FileSizePipe } from './utilities/pipes/file-size.pipe';
+import { DialComponent } from './components/atomic/dial/dial.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { FileSizePipe } from './utilities/pipes/file-size.pipe';
     RangeComponent,
     DropComponent,
     FileSizePipe,
+    DialComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+@import "/src/styles/colors";
+@import "/src/styles/global";
+
+.drop {
+  position: absolute;
+  @include col;
+  @include border-def-radius;
+  padding: $card-padding;
+  border: $border;
+  background-color: $dropdown-background;
+  @include trans(.32s);
+  @include shadow-s;
+  list-style-type: none;
+  // position: absolute;
+  // left: -1px;
+  // right: -1px;
+  // top: 32px + 8;
+  max-height: 0;
+  max-width: 0;
+  overflow-y: overlay;
+
+  // @actual max-height: 1000px;
+
+  transition-property: opacity, max-height, max-width;
+  opacity: 0;
+  transform-origin: top;
+}
+
+.drop.shown {
+  opacity: 1 !important;
+  max-height: 1000px;
+  max-width: 1000px;
+}
+

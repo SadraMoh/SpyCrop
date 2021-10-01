@@ -1,3 +1,4 @@
-<div class="drop">
+<div #top class="drop" [style.left]="selfLeft + 'px'" [style.top]="selfTop + 'px'" [class.shown]="isShown"
+    (mouseenter)="hostEnter($event)" (mouseleave)="hostLeave($event)">
     <ng-content></ng-content>
 </div>

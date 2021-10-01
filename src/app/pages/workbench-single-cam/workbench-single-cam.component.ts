@@ -8,6 +8,7 @@ import * as Path from "path";
 import { RextEditor } from 'rext-image-editor'
 import { Params } from 'rext-image-editor/dist/models/models';
 import { defaultParams } from 'rext-image-editor/dist/lib/constants';
+import { Direction } from 'src/app/components/atomic/drop/drop.component';
 
 @Component({
   selector: 'app-workbench-single-cam',
@@ -26,6 +27,8 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   contrast: number = 0;
   sharpness: number = 0;
   saturation: number = 0;
+
+  readonly direction = Direction;
 
   img!: HTMLImageElement;
 
@@ -63,7 +66,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
     // Selection Changed
 
     this.rext.load(this.selectedPage.image.src);
-    
+
   }
 
   public get selectedPage(): PageSingleComponent {

@@ -10,6 +10,14 @@ export class ComboComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    // Hide items if the user clicked outside the element
+    document.body.addEventListener('click', (e: any) => { if (!e.path.includes(this.combo.nativeElement)) this.isItemsShown = false });
+  }
+  
   /**
    * The string written in the searchbox
    */
@@ -22,6 +30,7 @@ export class ComboComponent implements OnInit, AfterViewInit {
 
   public set value(v: string) {
     this._value = v;
+    this.valueChange.emit(v);
   }
 
   @Output("valueChange")
@@ -107,13 +116,6 @@ export class ComboComponent implements OnInit, AfterViewInit {
     this.isItemsShown = true;
   }
 
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    // Hide items if the user clicked outside t
-    document.body.addEventListener('click', (e: any) => { if (!e.path.includes(this.combo.nativeElement)) this.isItemsShown = false });
-  }
 
 
 }

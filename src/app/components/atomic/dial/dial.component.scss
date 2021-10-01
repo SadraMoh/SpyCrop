@@ -1,0 +1,32 @@
+@import '/src/styles/colors';
+
+.dial {
+
+  .dial-progress {
+      @include trans(.7s);
+      transition-timing-function: ease-in-out;
+      stroke: $primary;
+      stroke-linecap: round;
+      fill: transparent;
+      transform-origin: center;
+      transform: rotate(-90deg);
+  }
+
+  .dial-background {
+      stroke: transparentize($primary-light,.72);
+      fill: transparent;
+  }
+}
+
+.dial-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+
+  .dial-percent {
+      margin: auto;
+  }
+}

@@ -88,6 +88,8 @@ $material-4: #212121;
 
 $card-padding : 8px;
 
+$dropdown-background:#2a2a2a;
+
 @mixin card {
   background-color: $material-1;
   @include shadow-m;

@@ -1,0 +1,12 @@
+<div class="dial">
+  <svg [attr.width]="size" [attr.height]="size" class="dial-vector">
+    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size - 2) - thickness"
+      class="dial-progress" [attr.stroke-width]="thickness" [attr.stroke-dasharray]="circumference + '' + circumference"
+      [attr.stroke-dashoffset]="offset" />
+    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size / 2) - thickness"
+      [attr.stroke-width]="thickness" class="dial-background" />
+  </svg>
+  <div class="dial-content">
+    <ng-content></ng-content>
+  </div>
+</div>

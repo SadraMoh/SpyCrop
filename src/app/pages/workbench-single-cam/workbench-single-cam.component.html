@@ -19,14 +19,19 @@
                 <span class="material-icons">crop</span>
             </button>
 
-            <drop [parent]="crop">
-                
-
-            </drop>
-
-            <button class="mat-btn btn-secondary shadow-lg">
+            <button #rotate
+                class="mat-btn btn-secondary shadow-lg">
                 <span class="material-icons">autorenew</span>
             </button>
+
+            <drop #dropRotate [parent]="rotate" [direction]="direction.br" mode="hover">
+                <h3>Rotate</h3>
+                <p>30</p>
+                <!-- <dial>
+                        <p>30</p>
+                    </dial> -->
+            </drop>
+
             <button class="mat-btn btn-secondary shadow-lg">
                 <span class="material-icons">flip</span>
             </button>
@@ -44,18 +49,13 @@
     </div>
     <div class="right col">
         <h3>Image Options</h3>
-        <label>Brightness {{brightness}}</label>
-        <label>Contrast {{contrast}}</label>
-        <label>Sharpness {{sharpness}}</label>
-        <label>Despeckle {{saturation}}</label>
-
         <!-- <range [(value)]="saturation" [min]="2" [max]="18" [step]="1" label="Saturation" icon="blur_on"></range> -->
         <range [(value)]="brightness" (valueChange)="optionsChanged()" [min]="-90" [max]="90" [step]=".3"
             label="Brightness" icon="wb_sunny"></range>
         <range [(value)]="contrast" (valueChange)="optionsChanged()" [min]="-80" [max]="80" [step]=".3" label="Contrast"
             icon="brightness_6"></range>
-        <range [(value)]="sharpness" (valueChange)="optionsChanged()" [min]="-100" [max]="100" [step]=".3" label="Sharpness"
-            icon="landscape"></range>
+        <range [(value)]="sharpness" (valueChange)="optionsChanged()" [min]="-100" [max]="100" [step]=".3"
+            label="Sharpness" icon="landscape"></range>
         <range [(value)]="saturation" (valueChange)="optionsChanged()" [min]="-100" [max]="100" [step]=".3"
             label="Saturation" icon="invert_colors"></range>
         <hr class="divider">
