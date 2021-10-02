@@ -24,6 +24,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   contrast: number = 0;
   sharpness: number = 0;
   saturation: number = 0;
+  rotation: number = 0;
 
   readonly direction = Direction;
 

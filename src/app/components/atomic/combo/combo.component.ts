@@ -15,9 +15,11 @@ export class ComboComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     // Hide items if the user clicked outside the element
-    document.body.addEventListener('click', (e: any) => { if (!e.path.includes(this.combo.nativeElement)) this.isItemsShown = false });
+    document.body.addEventListener('click', (e: any) => {
+      if (!e.path.includes(this.combo.nativeElement)) this.isItemsShown = false
+    });
   }
-  
+
   /**
    * The string written in the searchbox
    */

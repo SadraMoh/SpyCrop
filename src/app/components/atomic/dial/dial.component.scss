@@ -5,6 +5,7 @@
   display: flex;
   place-items: center;
   place-content: center;
+  cursor: ew-resize;
 
   .dial-vector {
     position: absolute;
@@ -12,10 +13,10 @@
     right: 0;
     top: 0;
     bottom: 0;
+    overflow: visible;
   }
 
   .dial-progress {
-    @include trans(0.7s);
     transition-timing-function: ease-in-out;
     stroke: $primary;
     stroke-linecap: round;
@@ -25,7 +26,7 @@
   }
 
   .dial-background {
-    stroke: transparentize($primary-light, 0.72);
+    stroke: transparentize($primary-light, 0.72); 
     fill: transparent;
   }
 }
@@ -33,10 +34,21 @@
 .dial-content {
   @include col;
   text-align: center;
+  user-select: none;
 
   > * {
     margin-left: auto;
     margin-right: auto;
   }
   
+  * {
+    user-select: none;
+  }
+
+}
+
+.dial-handle {
+  fill: darken($color: $primary, $amount: 6%);
+  user-select: none;
+  transform-origin: center;
 }

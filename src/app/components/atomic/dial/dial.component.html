@@ -1,12 +1,18 @@
-<div class="dial" [style.width]="size + 'px'" [style.height]="size + 'px'">
+<div (mousedown)="handleMouseDown($event)" class="dial" [style.width]="size + 'px'" [style.height]="size + 'px'">
   <svg [attr.width]="size" [attr.height]="size" class="dial-vector">
-    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size / 2) - thickness"
-      class="dial-progress" [attr.stroke-width]="thickness" [attr.stroke-dasharray]="ratio + ' ' + circumference"
+    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size / 2) - thickness" class="dial-progress"
+      [attr.stroke-width]="thickness" [attr.stroke-dasharray]="ratio + ' ' + circumference"
       [attr.stroke-dashoffset]="offset" />
-    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size / 2) - thickness"
-      [attr.stroke-width]="thickness" class="dial-background" />
+    <circle [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="(size / 2) - thickness" [attr.stroke-width]="thickness"
+      class="dial-background" />
+    <circle class="dial-handle" #handle [attr.cx]="size / 2" [attr.cy]="thickness"
+      [style.transform]="'rotate(' + rotation + 'deg)'" r="8" />
   </svg>
   <div class="dial-content" [style.width]="contentSize">
-    <ng-content></ng-content>
+    <div *ngIf="!customUI">
+      <h3>{{label}}</h3>
+      <p>{{ value | number: '1.1-1' }}%</p>
+    </div>
+    <ng-content *ngIf="customUI"></ng-content>
   </div>
 </div>
