@@ -19,17 +19,12 @@
                 <span class="material-icons">crop</span>
             </button>
 
-            <button #rotate
-                class="mat-btn btn-secondary shadow-lg">
+            <button #rotate class="mat-btn btn-secondary shadow-lg">
                 <span class="material-icons">autorenew</span>
             </button>
 
             <drop #dropRotate [parent]="rotate" [direction]="direction.br" mode="hover">
-                <h3>Rotate</h3>
-                <p>30</p>
-                <!-- <dial>
-                        <p>30</p>
-                    </dial> -->
+                
             </drop>
 
             <button class="mat-btn btn-secondary shadow-lg">
@@ -38,6 +33,12 @@
             <button class="mat-btn btn-secondary shadow-lg">
                 <span style="transform: rotate(90deg);" class="material-icons">flip</span>
             </button>
+
+            <dial [size]="100">
+                <h3>Rotate</h3>
+                <p>30</p>
+            </dial>
+            
         </div>
 
         <app-cropper [boundryElement]="scene" style="position: absolute;"></app-cropper>

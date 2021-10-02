@@ -5,9 +5,6 @@ import { PageSingleComponent } from 'src/app/components/page-single/page-single.
 import { FilesystemService } from 'src/app/services/filesystem.service';
 import { Image } from "src/app/models/image";
 import * as Path from "path";
-import { RextEditor } from 'rext-image-editor'
-import { Params } from 'rext-image-editor/dist/models/models';
-import { defaultParams } from 'rext-image-editor/dist/lib/constants';
 import { Direction } from 'src/app/components/atomic/drop/drop.component';
 
 @Component({
@@ -32,8 +29,6 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
   img!: HTMLImageElement;
 
-  rext!: RextEditor;
-
   constructor(
     private _electron: ElectronService,
     private fs: FilesystemService
@@ -48,7 +43,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.img = this.scene.nativeElement.querySelector('img') as HTMLImageElement;
 
-    this.rext = new RextEditor(this.canvas.nativeElement);
+    // this.rext = new RextEditor(this.canvas.nativeElement);
   }
 
   ngOnInit(): void {
@@ -65,7 +60,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
     // Selection Changed
 
-    this.rext.load(this.selectedPage.image.src);
+    // this.rext.load(this.selectedPage.image.src);
 
   }
 
@@ -88,33 +83,33 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   ]
 
   optionsChanged() {
-    this.rext?.updateParams({
-      atmosferic_light: 0,
-      hdr: 0,
-      exposure: 0,
-      temperature: 0,
-      tint: 0,
-      brightness: this.brightness,
-      saturation: this.saturation,
-      contrast: this.contrast,
-      sharpen: this.sharpness,
-      masking: 0,
-      sharpen_radius: 0,
-      radiance: 0,
-      highlights: 0,
-      shadows: 0,
-      whites: 0,
-      blacks: 0,
-      dehaze: 0,
-      bAndW: 0,
-      lightFill: 0,
-      lightColor: 0,
-      lightSat: 0,
-      darkFill: 0,
-      darkColor: 0,
-      darkSat: 0,
-      rotation: 0
-    })
+    // this.rext?.updateParams({
+    //   atmosferic_light: 0,
+    //   hdr: 0,
+    //   exposure: 0,
+    //   temperature: 0,
+    //   tint: 0,
+    //   brightness: this.brightness,
+    //   saturation: this.saturation,
+    //   contrast: this.contrast,
+    //   sharpen: this.sharpness,
+    //   masking: 0,
+    //   sharpen_radius: 0,
+    //   radiance: 0,
+    //   highlights: 0,
+    //   shadows: 0,
+    //   whites: 0,
+    //   blacks: 0,
+    //   dehaze: 0,
+    //   bAndW: 0,
+    //   lightFill: 0,
+    //   lightColor: 0,
+    //   lightSat: 0,
+    //   darkFill: 0,
+    //   darkColor: 0,
+    //   darkSat: 0,
+    //   rotation: 0
+    // })
   }
 
   folderClicked() {

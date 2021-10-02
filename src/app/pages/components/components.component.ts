@@ -14,6 +14,8 @@ export class ComponentsComponent implements OnInit {
 
   }
 
+  dialValue = 50 as any;
+  
   ngOnInit(): void {
     // if (this._electron.isElectronApp) {
     //   this._electron.ipcRenderer.on('pong', (event, arg) => {
