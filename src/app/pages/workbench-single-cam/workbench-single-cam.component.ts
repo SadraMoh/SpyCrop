@@ -11,6 +11,8 @@ import { RextEditor } from 'rext-image-editor'
 import { Params } from 'rext-image-editor/dist/models/models';
 import { defaultParams } from 'rext-image-editor/dist/lib/constants';
 
+declare type f2Number = number;
+
 @Component({
   selector: 'app-workbench-single-cam',
   templateUrl: './workbench-single-cam.component.html',
@@ -119,9 +121,14 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
       darkFill: 0,
       darkColor: 0,
       darkSat: 0,
-      rotation: 0
+      rotation: this.rotation * Math.PI / 180,
+      scale: { x: this.zoom / 8, y: this.zoom / 8 },
+      translate: { x: 0, y: 0 }
     })
   }
+
+
+
 
   folderClicked() {
 

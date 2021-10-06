@@ -31,7 +31,7 @@
                 <span class="material-icons">autorenew</span>
             </button>
             <drop #dropRotate [parent]="btnRotate" [direction]="'br'" mode="hover">
-                <dial [size]="100" [min]="0" [max]="360" label="Rotation" [(value)]="rotation"></dial>
+                <dial [size]="100" [min]="0" [max]="360" label="Rotation" (valueChange)="optionsChanged()" [(value)]="rotation"></dial>
             </drop>
 
             <button class="mat-btn btn-secondary shadow-lg">
@@ -45,7 +45,7 @@
                 <span class="material-icons">search</span>
             </button>
             <drop #dropZoom [parent]="btnZoom" direction="br" mode="hover">
-                <range [(value)]="zoom" [min]="0" [max]="8" [step]="1" icon="search"></range>
+                <range [(value)]="zoom" (valueChange)="optionsChanged()" [min]="0" [max]="8" [step]="1" icon="search"></range>
             </drop>
 
         </div>
@@ -56,8 +56,7 @@
 
         <div class="picture" #scene>
             <!-- <img class="mainImage" [src]="selectedPage?.image?.src ?? 'assets/img/Book.png'" draggable="false" alt=""> -->
-            <canvas #canvas class="mainImage"
-                [style.transform]="'rotate(' + rotation + 'deg) scale(' + (1 + (zoom * .25)) + ')'">
+            <canvas #canvas class="mainImage">
             </canvas>
         </div>
     </div>
