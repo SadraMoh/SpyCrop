@@ -46,6 +46,7 @@ export class FilesystemService {
     return this._electron.ipcRenderer.sendSync('readFile', path);
   }
 
+  // @todo make this method async
   readdir(path: string): string[] {
     return this._electron.ipcRenderer.sendSync('readdir', path);
   }

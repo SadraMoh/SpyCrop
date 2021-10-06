@@ -6,6 +6,10 @@ import { FilesystemService } from 'src/app/services/filesystem.service';
 import { Image } from "src/app/models/image";
 import * as Path from "path";
 import { Direction } from 'src/app/components/atomic/drop/drop.component';
+//- 
+import { RextEditor } from 'rext-image-editor'
+import { Params } from 'rext-image-editor/dist/models/models';
+import { defaultParams } from 'rext-image-editor/dist/lib/constants';
 
 @Component({
   selector: 'app-workbench-single-cam',
@@ -26,9 +30,15 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   saturation: number = 0;
   rotation: number = 0;
 
-  readonly direction = Direction;
+  /** [0 - 8] */
+  zoom: number = 0;
 
   img!: HTMLImageElement;
+
+  rext!: RextEditor;
+
+  cropperWidth: number = 54;
+  cropperHeight: number = 54;
 
   constructor(
     private _electron: ElectronService,
@@ -44,7 +54,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.img = this.scene.nativeElement.querySelector('img') as HTMLImageElement;
 
-    // this.rext = new RextEditor(this.canvas.nativeElement);
+    this.rext = new RextEditor(this.canvas.nativeElement);
   }
 
   ngOnInit(): void {
@@ -61,7 +71,7 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
     // Selection Changed
 
-    // this.rext.load(this.selectedPage.image.src);
+    this.rext.load(this.selectedPage.image.src);
 
   }
 
@@ -84,33 +94,33 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   ]
 
   optionsChanged() {
-    // this.rext?.updateParams({
-    //   atmosferic_light: 0,
-    //   hdr: 0,
-    //   exposure: 0,
-    //   temperature: 0,
-    //   tint: 0,
-    //   brightness: this.brightness,
-    //   saturation: this.saturation,
-    //   contrast: this.contrast,
-    //   sharpen: this.sharpness,
-    //   masking: 0,
-    //   sharpen_radius: 0,
-    //   radiance: 0,
-    //   highlights: 0,
-    //   shadows: 0,
-    //   whites: 0,
-    //   blacks: 0,
-    //   dehaze: 0,
-    //   bAndW: 0,
-    //   lightFill: 0,
-    //   lightColor: 0,
-    //   lightSat: 0,
-    //   darkFill: 0,
-    //   darkColor: 0,
-    //   darkSat: 0,
-    //   rotation: 0
-    // })
+    this.rext?.updateParams({
+      atmosferic_light: 0,
+      hdr: 0,
+      exposure: 0,
+      temperature: 0,
+      tint: 0,
+      brightness: this.brightness / 40,
+      saturation: this.saturation / 50,
+      contrast: this.contrast / 50,
+      sharpen: this.sharpness / 50,
+      masking: 0,
+      sharpen_radius: 0,
+      radiance: 0,
+      highlights: 0,
+      shadows: 0,
+      whites: 0,
+      blacks: 0,
+      dehaze: 0,
+      bAndW: 0,
+      lightFill: 0,
+      lightColor: 0,
+      lightSat: 0,
+      darkFill: 0,
+      darkColor: 0,
+      darkSat: 0,
+      rotation: 0
+    })
   }
 
   folderClicked() {
@@ -126,10 +136,11 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
   }
 
   watchTimer!: NodeJS.Timeout
-  readonly timerInterval: number = 768;
+  readonly timerInterval: number = 5000;
 
   startWatching(): void {
     this.watchTimer = setInterval(() => { this.watch() }, this.timerInterval);
+    this.watch();
   }
 
   stopWatching(): void {
@@ -204,5 +215,10 @@ export class WorkbenchSingleCamComponent implements OnInit, AfterViewInit {
 
   }
 
+  cropperTransform(): void {
+
+    console.log('e');
+
+  }
 
 }

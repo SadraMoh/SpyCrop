@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -15,6 +15,44 @@ export class CropperComponent implements OnInit, AfterViewInit {
 
   @ViewChild("cropper")
   public cropper!: ElementRef<HTMLDivElement>
+
+  /** Resize or move */
+  @Output('transform')
+  public transform: EventEmitter<void> = new EventEmitter<void>();
+
+  public cropperX: number = 0;
+  public cropperY: number = 0;
+
+  _cropperWidth: number = 54;
+
+  @Input('width')
+  public set cropperWidth(v: number) {
+    this.widthChange.emit(v);
+    this._cropperWidth = v;
+  }
+
+  public get cropperWidth(): number {
+    return this._cropperWidth;
+  }
+
+  @Output("widthChange")
+  public widthChange: EventEmitter<number> = new EventEmitter<number>();
+
+  _cropperHeight: number = 54;
+
+  @Input('height')
+  public set cropperHeight(v: number) {
+    this.heightChange.emit(v);
+    this._cropperHeight = v;
+  }
+
+  public get cropperHeight(): number {
+    return this._cropperHeight;
+  }
+
+  @Output("heightChange")
+  public heightChange: EventEmitter<number> = new EventEmitter<number>();
+
 
   ngOnInit(): void {
 
@@ -39,9 +77,6 @@ export class CropperComponent implements OnInit, AfterViewInit {
     this.grabbedCorner = Corner.none;
 
   }
-
-  public cropperWidth: number = 54;
-  public cropperHeight: number = 54;
 
   mousemoveObservable$!: Observable<Event>
   mousemoveSubscription$!: Subscription
@@ -113,7 +148,6 @@ export class CropperComponent implements OnInit, AfterViewInit {
     // For depiction in the UI
     this.cropperWidth = rect.width;
     this.cropperHeight = rect.height;
-
   }
 
   tlDown() { this.sub2MouseMove([Side.top, Side.left]); this.grabbedCorner = Corner.topLeft }

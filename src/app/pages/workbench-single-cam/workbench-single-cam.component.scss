@@ -55,7 +55,8 @@ $ribbon-height: 20px;
 
       .mainImage {
         max-width: 900px;
-        width: 100%;
+        width: auto;
+        max-height: calc(100vh - 150px);
         @include shadow-xxlg;
         border: 1px $material-2 solid;
         user-select: none !important;

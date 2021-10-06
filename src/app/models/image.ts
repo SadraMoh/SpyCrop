@@ -37,10 +37,12 @@ export class Image {
         this.size = stat.size;
 
         // this.base64 = Image.bufferToBase64(buffer);
-        const base64 = Image.bufferToBase64(buffer);
+        // const base64 = Image.bufferToBase64(buffer);
 
 
-        this.img.src = `data:image/${this.format.replace('.','')};base64,${base64}`;
+        // this.img.src = `data:image/${this.format.replace('.','')};base64,${base64}`;
+        
+        this.img.src = path;
 
     }
 

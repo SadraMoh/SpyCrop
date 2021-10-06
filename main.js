@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain, dialog } = require('electron');
+const { app , BrowserWindow, Menu, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -11,14 +11,15 @@ function createWindow() {
         height: 1000,
         backgroundColor: '#fefefe',
         webPreferences: {
-            nodeIntegration: true,
+            webSecurity: false,
+            nodeIntegration: true,  
             enableRemoteModule: true,
             contextIsolation: false
         },
     })
 
     win.loadURL(`file://${__dirname}/dist/SpyCrop/index.html`);
-    
+
     win.webContents.openDevTools()
 
     var menu = Menu.buildFromTemplate([
@@ -72,6 +73,7 @@ function createWindow() {
 
 app.on('ready', () => {
     createWindow();
+
 });
 
 app.on('window-all-closed', () => {

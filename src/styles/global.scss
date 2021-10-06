@@ -1,9 +1,8 @@
-@import '_colors.scss';
+@import "_colors.scss";
 
-$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+$material-design-icons-font-directory-path: "~material-design-icons-iconfont/dist/fonts/";
 
-@import '~material-design-icons-iconfont/src/material-design-icons';
-
+@import "~material-design-icons-iconfont/src/material-design-icons";
 
 :root {
   font-size: 15px;
@@ -14,13 +13,18 @@ $material-design-icons-font-directory-path: '~material-design-icons-iconfont/dis
   padding: 0;
   outline: none;
   color: $text-2;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 html,
 body {
   background-color: $background-color;
   overflow-x: hidden;
+}
+
+.material-icons {
+  user-select: none;
 }
 
 // #region custom scrollbar
@@ -49,12 +53,12 @@ body {
 a {
   text-decoration: none;
   cursor: pointer;
-  @include trans(.32s);
+  @include trans(0.32s);
 }
 
 a:hover {
   color: $primary-light;
-  @include trans(.16s);
+  @include trans(0.16s);
 }
 
 button {
@@ -63,7 +67,7 @@ button {
 }
 
 .material-icons {
-  outline: inherit
+  outline: inherit;
 }
 
 .row {
@@ -82,7 +86,7 @@ button {
   @include colr;
 }
 
-// -------------------- Implementations -------------------- // 
+// -------------------- Implementations -------------------- //
 
 .card {
   @include card;
@@ -110,23 +114,23 @@ button {
 }
 
 .shadow-xs {
-  @include shadow-xs
+  @include shadow-xs;
 }
 
 .shadow-s {
-  @include shadow-s
+  @include shadow-s;
 }
 
 .shadow-m {
-  @include shadow-m
+  @include shadow-m;
 }
 
 .shadow-lg {
-  @include shadow-lg
+  @include shadow-lg;
 }
 
 .shadow-xlg {
-  @include shadow-xlg
+  @include shadow-xlg;
 }
 
 // #region Controls
@@ -161,7 +165,6 @@ button {
   color: $material-3;
 }
 
-
 .btn-invis {
   background-color: transparent;
   cursor: pointer;
@@ -181,7 +184,7 @@ button {
   color: $text-1;
   padding: 4px;
   cursor: pointer;
-  @include trans(.3s);
+  @include trans(0.3s);
 
   display: flex;
   align-items: center;
@@ -189,7 +192,7 @@ button {
 }
 
 .mat-btn:hover {
-  @include trans(.16s);
+  @include trans(0.16s);
   background-color: lighten($color: $material-2, $amount: 8%);
 }
 
@@ -202,10 +205,9 @@ button {
   background-color: $primary;
   color: $text-1;
 
-  >* {
+  > * {
     color: $text-1;
   }
-
 }
 
 .btn-primary:hover {
@@ -217,12 +219,11 @@ button {
   background-color: lighten($color: $primary, $amount: 16%);
 }
 
-
 // #endregion Controls
 
 // #region Table
 
-$table-padding : 8px;
+$table-padding: 8px;
 
 .tbl {
   border-spacing: 0;
@@ -236,11 +237,11 @@ $table-padding : 8px;
         text-align: left;
       }
 
-      th:first-child{
+      th:first-child {
         padding-left: 16px;
       }
 
-      th:last-child{
+      th:last-child {
         padding-right: 16px;
       }
     }
@@ -249,17 +250,17 @@ $table-padding : 8px;
   tbody {
     tr {
       background-color: $material-1;
-      @include trans(.32s);
+      @include trans(0.32s);
 
       td {
         padding: $table-padding;
       }
 
-      td:first-child{
+      td:first-child {
         padding-left: 16px;
       }
 
-      td:last-child{
+      td:last-child {
         padding-right: 16px;
       }
     }
@@ -277,14 +278,14 @@ $table-padding : 8px;
 .tbl.tbl-hover {
   tbody {
     tr:hover {
-      @include trans(.16s);
+      @include trans(0.16s);
       background-color: lighten($color: $material-1, $amount: 6%);
     }
   }
 }
 
 .tbl.tbl-hover.tbl.tbl-striped {
-  tbody{
+  tbody {
     tr:nth-child(2n-1):hover {
       background-color: lighten($color: $material-1, $amount: 6%);
     }
@@ -295,6 +296,5 @@ $table-padding : 8px;
   overflow: hidden;
   @include border-def-radius;
 }
-
 
 // #endregion Table

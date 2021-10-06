@@ -9,6 +9,8 @@ import { fromEvent, Observable, Subscription, timer } from 'rxjs';
 })
 export class DropComponent implements AfterViewInit, OnDestroy {
 
+
+
   /** Top level element in this components Template */
   @ViewChild('top')
   top!: ElementRef<HTMLElement>;
@@ -21,7 +23,7 @@ export class DropComponent implements AfterViewInit, OnDestroy {
   parent!: HTMLElement
 
   @Input("direction")
-  direction: Direction = Direction.br;
+  direction: Direction = 'br';
 
   /** How far should the drop element be from its [parent] */
   @Input("offset")
@@ -84,7 +86,7 @@ export class DropComponent implements AfterViewInit, OnDestroy {
 
   //- Parent
   private parentLeave(e: any) {
-    if (this.mode === 'hover') 
+    if (this.mode === 'hover')
       // Start Countdown to hide
       this.hideTimerSub = timer(this.delayBeforeHide).subscribe(_ => this.hide());
   }
@@ -104,7 +106,7 @@ export class DropComponent implements AfterViewInit, OnDestroy {
 
   //- Host (Subscribed in HTMLTemplate)
   hostLeave(e: any) {
-    if (this.mode === 'hover') 
+    if (this.mode === 'hover')
       // Start Countdown to hide
       this.hideTimerSub = timer(this.delayBeforeHide).subscribe(_ => this.hide());
   }
@@ -196,27 +198,28 @@ export class DropComponent implements AfterViewInit, OnDestroy {
     const swidth = this.host.getBoundingClientRect().width;
 
     switch (this.direction) {
-      case Direction.tl:
-        break;
-      case Direction.tc:
+      case 'tl':
 
         break;
-      case Direction.tr:
+      case 'tc':
 
         break;
-      case Direction.ml:
+      case 'tr':
 
         break;
-      case Direction.mr:
+      case 'ml':
 
         break;
-      case Direction.bl:
+      case 'mr':
 
         break;
-      case Direction.bc:
+      case 'bl':
 
         break;
-      case Direction.br:
+      case 'bc':
+
+        break;
+      case 'br':
         this.selfLeft = p.x;
         this.selfTop = h.height + this.offset;
         break;
@@ -226,16 +229,11 @@ export class DropComponent implements AfterViewInit, OnDestroy {
 }
 
 /** 
- * The direction the drop element should be placed relative to its parent element
- * @example
- * tl    tc    tr
- * ml [Parent] mr
- * bl    bc    br
- */
-export enum Direction {
-  tl, tc, tr,
-  ml, mr,
-  bl, bc, br
-}
-
+* The direction the drop element should be placed relative to its parent element
+* @example
+* tl    tc    tr
+* ml [Parent] mr
+* bl    bc    br
+*/
+export type Direction = 'tl' | 'tc' | 'tr' | 'ml' | 'mr' | 'bl' | 'bc' | 'br';
 
